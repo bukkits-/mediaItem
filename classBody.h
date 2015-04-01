@@ -56,7 +56,6 @@ class mediaInfo
   int itemPageNum_;
   bool itemPrint_;
   float itemValue_;
-  std::string itemName_;
   Author *itemAuthor_; //used to associate an author
   mediaInfo *sequelItem_;
 
@@ -64,6 +63,7 @@ class mediaInfo
 
  public:
 
+   std::string itemName_;
    bool objectEmpty_; 
 
 //constructor/destructor - sets all attributes to initial values and increments object counter 

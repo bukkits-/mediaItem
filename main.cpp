@@ -49,6 +49,12 @@ int selectedObject = -1;
 // Prototypes for optionSelect and menuDisplay
 void optionSelect(char);
 void menuDisplay();
+bool stringCompare(mediaInfo*, mediaInfo*);
+
+bool stringCompare(mediaInfo* m1, mediaInfo* m2)
+{
+  return m1->getName() < m1->getName();
+}
 
 //menuDisplay function - displays menu
 void menuDisplay ()
@@ -101,7 +107,7 @@ void optionSelect(char inputChar)
       int itemCount = 0;
       int authorCount = 0; // these will be used to count the number of items that are printed
       std::cout << "== Media Items ==\n";
-      for(int i = 1; i < mediaObject.size(); i++)
+      for(int i = 0; i < mediaObject.size(); i++)
       {
         if(mediaObject[i]->isEmpty() == false)
         {
@@ -508,12 +514,13 @@ void optionSelect(char inputChar)
   //TODO: Implement sorting in "case: 'U'""
     case 'U':
     {
-      int itemCount = 0;
-	  std::sort(mediaObject.begin(), mediaObject.end());
-	   std::cout << "== Media Items ==\n";
-      for(int i = 1; i < mediaObject.size(); i++)
-      {
-        if(mediaObject[i]->isEmpty() == false)
+     //This doesn't really sort anything yet because mediaObject points to classes, not an int or string value
+	   std::sort(mediaObject.begin(), mediaObject.end(), stringCompare);
+     std::cout << "Sort complete.\n";
+     std::cout << "== Media Items ==\n";
+     for(int i = 0; i < mediaObject.size(); i++)
+     {
+       if(mediaObject[i]->isEmpty() == false)
         {
           std::cout << "Media item " << i << ":" << std::endl;
           mediaObject[i]->returnInfo();
@@ -521,7 +528,6 @@ void optionSelect(char inputChar)
           mediaObject[i]->getSequel();
           mediaObject[i]->printElements();
           mediaObject[i]->childPrintInfo();
-          itemCount++;
           std::cout << std::endl;
         }
       } 
