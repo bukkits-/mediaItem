@@ -135,6 +135,8 @@ class mediaInfo
    void printName();
 
    void returnInfo();
+   
+   //bool sortByName(const mediaInfo &lhs, const mediaInfo &rhs) { return lhs.itemName_ < rhs.itemName_; }
 };
 
 #endif
