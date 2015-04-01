@@ -28,6 +28,7 @@ mixed array initalization function
 #include <fstream>
 #include <stdlib.h>
 #include <vector>
+#include <algorithm>
 
 #include "classBody.h"
 #include "author.h"
@@ -43,6 +44,7 @@ static Author authorObject[AUTHORMAX];
 static std::vector<mediaInfo *> mediaObject;
 int selectedAuthor = 0;
 int selectedObject = -1;
+
 
 // Prototypes for optionSelect and menuDisplay
 void optionSelect(char);
@@ -504,10 +506,25 @@ void optionSelect(char inputChar)
     }
 
   //TODO: Implement sorting in "case: 'U'""
-
     case 'U':
     {
-
+      int itemCount = 0;
+	  std::sort(mediaObject.begin(), mediaObject.end());
+	   std::cout << "== Media Items ==\n";
+      for(int i = 1; i < mediaObject.size(); i++)
+      {
+        if(mediaObject[i]->isEmpty() == false)
+        {
+          std::cout << "Media item " << i << ":" << std::endl;
+          mediaObject[i]->returnInfo();
+          mediaObject[i]->getAuthor();
+          mediaObject[i]->getSequel();
+          mediaObject[i]->printElements();
+          mediaObject[i]->childPrintInfo();
+          itemCount++;
+          std::cout << std::endl;
+        }
+      } 
       break;
     }
 

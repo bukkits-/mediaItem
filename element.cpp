@@ -18,33 +18,33 @@ element.cpp contains function implementation for the mediaElement class
 
 void mediaElement::setName(std::string elementName)
 {
-  m_elementName = elementName;
+  elementName_ = elementName;
 }
 
 void mediaElement::setStart(int elementStart)
 {
-	m_elementStart = elementStart;
+	elementStart_ = elementStart;
 }
 
 void mediaElement::setEnd(int elementEnd)
 {
-	m_elementEnd = elementEnd;
+	elementEnd_ = elementEnd;
 }
 
 void mediaElement::printName()
 {
-if(m_elementName != "Empty")
-    {std::cout << "  Element Name: " << m_elementName << std::endl;}
+if(elementName_ != "Empty")
+    {std::cout << "  Element Name: " << elementName_ << std::endl;}
 }
 
 void mediaElement::printStart()
 {
-if(m_elementStart != 0)
-    {std::cout << "  Start: " << m_elementStart << std::endl;}
+if(elementStart_ != 0)
+    {std::cout << "  Start: " << elementStart_ << std::endl;}
 }
 
 void mediaElement::printEnd()
 {
-if(m_elementEnd != 0)
-    {std::cout << "  End: " << m_elementEnd << std::endl;}
+if(elementEnd_ != 0)
+    {std::cout << "  End: " << elementEnd_ << std::endl;}
 }
