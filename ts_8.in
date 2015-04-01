@@ -1,0 +1,96 @@
+r
+*
+# 20
+//
+n Stardust
+c 1933 0 Willie Nelson
+t 0
+v 9.99
+k country
++
+//
+n Back in Black
+c 0 0 AC/DC
+t 1
+v 7.99
+k Rock
+y 1994
++
+//
+n Big Daddy Multitude
+c 0 0 Mustard Plug
+y 1993
+t 2
+k Ska
+v 8.99  
++
+//
+n Natty Dread
+c 1945 1981 Bob Marley
+y 2001
+t 3
+k Reggae
+v 12.98
+e 0 0 Rebel Music
+e 0 0 No Woman No Cry
+e 0 0 Revolution
++
+//
+n Aphex Twins
+k Techno
+v 4.44
++
+//
+n Nobodys Smiling
+c 1972 0 Lonnie Lynn
+t 4
+k HipHop
+v 9.87
+y 2014
++
+//
+n Rockabilly Riot!
+c 1959 0 Brian Setzer
+t 5
+v 11.99
+y 2014
+k Rockabilly
++
+// Polka
+n 16 Most Requested Polkas
+y 2008
+v 4.99
+k Polka
++
+//
+n Shadows in the Night
+c 1941 0 Bob Dylan
+t 6
+y 2015
+# 40
+//
+n The Harder They Come
+y 1972
+f Perry Henzell
+v 7.58
+//
+# 39
+//
+n Still the Same Ole Me
+k Country/Western
+y 1969
+v 0.99
+c 1931 2013 George Jones
+t 7
+//
+# 61
+n Final Fantasy XIV: A Realm Reborn
+y 2013
+v 19.99
+// Output
+l
+r
+*
+q
+q
+q

@@ -1,0 +1,607 @@
+Script started on Mon 30 Mar 2015 04:45:45 PM MDT
+[01;32mderek@bearcat[01;34m ~/Documents/HW5 $[00m exit./assignment5.exe < ts_11.in 
+| Books | Music | Video | Media |
+| 0-19  | 20-39 | 40-59 | 60-79 |
+
+--------------Menu-------------
+* : Display all item data
+# : Select by item number
++ : Move forward to next item
+- : Return to previous item
+0 : Clear item data
+B:  Set duration/time
+C : Create new author
+D : Display item data
+E : Set element info
+F:  Set music producer or video director
+I : Set item in print status
+J : Set item ISBN
+M : Display main menu
+N : Set item name
+P : Set item pages
+S : Set item sequel
+T : Set item author
+V : Set item value
+Y : Set item publication year
+Q : Quit
+--------------------------------
+
+
+Menu (No Item): r
+
+There are 0 media objects in memory.
+Media Object size: 0 Bytes 
+Authors in memory: 8 author objects in memory.
+Author Object size: 0 Bytes 
+Total size of objects : 0
+
+Menu (No Item): *
+
+== Media Items ==
+No items found.
+
+== Author Items ==
+No authors found.
+
+Menu (No Item): /
+
+
+Menu (No Item): +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 1 Menu: n
+
+Input media name: 
+
+Item 1 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 1 Menu: t
+
+Input author number: 
+  Name: Willie Nelson
+  Born: 1933
+
+Item 1 Menu: v
+
+Input item price: 
+
+Item 1 Menu: k
+
+Please input genre: 
+country
+Item genre set to OTHER.
+
+Item 1 Menu: /
+
+
+Item 1 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 2 Menu: n
+
+Input media name: 
+
+Item 2 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 2 Menu: t
+
+Input author number: 
+  Name: AC/DC
+
+Item 2 Menu: v
+
+Input item price: 
+
+Item 2 Menu: k
+
+Please input genre: 
+Rock
+Item genre set to OTHER.
+
+Item 2 Menu: y
+
+Input item publication year: 
+
+Item 2 Menu: /
+
+
+Item 2 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 3 Menu: n
+
+Input media name: 
+
+Item 3 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 3 Menu: y
+
+Input item publication year: 
+
+Item 3 Menu: t
+
+Input author number: 
+  Name: Mustard Plug
+
+Item 3 Menu: k
+
+Please input genre: 
+Ska
+Item genre set to OTHER.
+
+Item 3 Menu: v
+
+Input item price: 
+
+Item 3 Menu: /
+
+
+Item 3 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 4 Menu: n
+
+Input media name: 
+
+Item 4 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 4 Menu: y
+
+Input item publication year: 
+
+Item 4 Menu: t
+
+Input author number: 
+  Name: Bob Marley
+  Born: 1945
+  Died: 1981
+
+Item 4 Menu: k
+
+Please input genre: 
+Reggae
+Item genre set to OTHER.
+
+Item 4 Menu: v
+
+Input item price: 
+
+Item 4 Menu: e
+
+Input element start: 
+Input element end: 
+Input element name: 
+
+Item 4 Menu: e
+
+Input element start: 
+Input element end: 
+Input element name: 
+
+Item 4 Menu: e
+
+Input element start: 
+Input element end: 
+Input element name: 
+
+Item 4 Menu: /
+
+
+Item 4 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 5 Menu: n
+
+Input media name: 
+
+Item 5 Menu: k
+
+Please input genre: 
+Techno
+Item genre set to OTHER.
+
+Item 5 Menu: v
+
+Input item price: 
+
+Item 5 Menu: /
+
+
+Item 5 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 6 Menu: n
+
+Input media name: 
+
+Item 6 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 6 Menu: t
+
+Input author number: 
+  Name: Lonnie Lynn
+  Born: 1972
+
+Item 6 Menu: k
+
+Please input genre: 
+HipHop
+
+Item 6 Menu: v
+
+Input item price: 
+
+Item 6 Menu: y
+
+Input item publication year: 
+
+Item 6 Menu: /
+
+
+Item 6 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 7 Menu: n
+
+Input media name: 
+
+Item 7 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 7 Menu: t
+
+Input author number: 
+  Name: Brian Setzer
+  Born: 1959
+
+Item 7 Menu: v
+
+Input item price: 
+
+Item 7 Menu: y
+
+Input item publication year: 
+
+Item 7 Menu: k
+
+Please input genre: 
+Rockabilly
+Item genre set to OTHER.
+
+Item 7 Menu: /
+
+// Polka
+
+Item 7 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 8 Menu: n
+
+Input media name: 
+
+Item 8 Menu: y
+
+Input item publication year: 
+
+Item 8 Menu: v
+
+Input item price: 
+
+Item 8 Menu: k
+
+Please input genre: 
+Polka
+Item genre set to OTHER.
+
+Item 8 Menu: /
+
+// 
+
+Item 8 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 9 Menu: n
+
+Input media name: 
+
+Item 9 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 9 Menu: t
+
+Input author number: 
+  Name: Bob Dylan
+  Born: 1941
+
+Item 9 Menu: y
+
+Input item publication year: 
+
+Item 9 Menu: /
+
+
+Item 9 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 10 Menu: n
+
+Input media name: 
+
+Item 10 Menu: y
+
+Input item publication year: 
+
+Item 10 Menu: f
+
+Enter music producer or video director: 
+
+Item 10 Menu: v
+
+Input item price: 
+
+Item 10 Menu: /
+
+
+Item 10 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : m
+Music item created.
+
+Item 11 Menu: n
+
+Input media name: 
+
+Item 11 Menu: k
+
+Please input genre: 
+Country/Western
+Item genre set to OTHER.
+
+Item 11 Menu: y
+
+Input item publication year: 
+
+Item 11 Menu: v
+
+Input item price: 
+
+Item 11 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 11 Menu: t
+
+Input author number: 
+  Name: George Jones
+  Born: 1931
+  Died: 2013
+
+Item 11 Menu: /
+
+
+Item 11 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : i
+Default media item created.
+
+Item 12 Menu: n
+
+Input media name: 
+
+Item 12 Menu: y
+
+Input item publication year: 
+
+Item 12 Menu: v
+
+Input item price: 
+
+Item 12 Menu: c
+
+Input author birth year: 
+Input author death year (0 if alive): 
+Input author name: 
+
+Item 12 Menu: t
+
+Input author number: 
+  Name: 
+  Born: 2003
+  Died: 154281872
+
+Item 12 Menu: /
+
+
+Item 12 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : i
+Default media item created.
+
+Item 13 Menu: n
+
+Input media name: 
+
+Item 13 Menu: y
+
+Input item publication year: 
+
+Item 13 Menu: v
+
+Input item price: 
+
+Item 13 Menu: t
+
+Input author number: 
+  Name: 
+  Born: 154281860
+  Died: 154281872
+
+Item 13 Menu: /
+
+
+Item 13 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : i
+Default media item created.
+
+Item 14 Menu: n
+
+Input media name: 
+
+Item 14 Menu: y
+
+Input item publication year: 
+
+Item 14 Menu: v
+
+Input item price: 
+
+Item 14 Menu: t
+
+Input author number: 
+  Name: 
+  Born: 154281864
+  Died: 154281872
+
+Item 14 Menu: /
+
+
+Item 14 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : i
+Default media item created.
+
+Item 15 Menu: n
+
+Input media name: 
+
+Item 15 Menu: y
+
+Input item publication year: 
+
+Item 15 Menu: v
+
+Input item price: 
+
+Item 15 Menu: t
+
+Input author number: 
+  Name: 
+  Born: 154281868
+  Died: 154281872
+
+Item 15 Menu: /
+
+
+Item 15 Menu: +
+
+Create a new item
+[M]usic, [B]ook, [V]ideo, or [*] : i
+Default media item created.
+
+Item 16 Menu: n
+
+Input media name: 
+
+Item 16 Menu: v
+
+Input item price: 
+
+Item 16 Menu: t
+
+Input author number: 
+  Name: 
+  Born: 154281872
+  Died: 154281872
+
+Item 16 Menu: y
+
+Input item publication year: 
+
+Item 16 Menu: /
+
+// Sequels
+
+Item 16 Menu: #
+
+Input item number: 
+  Item 12 selected.
+
+Item 12 Menu: s
+
+Input sequel #: 
+Item 12 Menu: #
+
+Input item number: 
+  Item 11 selected.
+
+Item 11 Menu: s
+
+Input sequel #: Segmentation fault
+[01;32mderek@bearcat[01;34m ~/Documents/HW5 $[00m exit
+exit
+
+Script done on Mon 30 Mar 2015 04:45:50 PM MDT
