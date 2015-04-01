@@ -2,7 +2,7 @@
 Matthew Groeling
 
 CS225 
-Assignment 4
+Assignment 6
 classBody.cpp
 
 author.h contains the Author class constructor and destructor.

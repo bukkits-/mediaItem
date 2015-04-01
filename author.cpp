@@ -2,7 +2,7 @@
 Matthew Groeling
 
 CS225 
-Assignment 4
+Assignment 6
 classBody.cpp
 
 author.cpp contains implementation of the author class.

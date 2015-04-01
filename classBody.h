@@ -2,7 +2,7 @@
 Matthew Groeling
 
 CS225
-Assignment 4
+Assignment 6
 classBody.h
 
 mediaInfo is a base class, used primarily
