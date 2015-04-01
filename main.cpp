@@ -53,7 +53,7 @@ bool stringCompare(mediaInfo*, mediaInfo*);
 
 bool stringCompare(mediaInfo* m1, mediaInfo* m2)
 {
-  return m1->getName() < m1->getName();
+  return m1->getName() < m2->getName();
 }
 
 //menuDisplay function - displays menu
