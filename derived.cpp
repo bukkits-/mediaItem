@@ -1,3 +1,14 @@
+/*************************************************************
+Matthew Groeling
+
+CS225 
+Assignment 6
+derived.cpp
+
+Implementation of derived class functions
+*************************************************************/
+
+
 #include <iostream>
 #include <istream>
 #include <string>
