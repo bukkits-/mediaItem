@@ -4,7 +4,7 @@
 #
 
 # Here is a simple Make Macro.
-LINK_TARGET = assignment5.exe
+LINK_TARGET = assignment6.exe
 
 # Here is a Make Macro that uses the backslash to extend to multiple lines.
 OBJS =  \
