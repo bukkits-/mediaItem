@@ -37,16 +37,6 @@ mixed array initalization function
 #define AUTHORMAX 8
 #define ELEMENTS 15
 
-
-//TODO: 
-//- genres
-//- list
-//- 'U' menu option
-//- work on # menu option
-//- make sure all class variables use underscore in name
-//- make sure all implementations occur in cpp files (including constructors
-//- add k (set genre) and l (list music by genre) options 
-
 //Global Variables
 bool loopBool = true;
 static Author authorObject[AUTHORMAX];
