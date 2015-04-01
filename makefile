@@ -56,7 +56,7 @@ $(LINK_TARGET) : $(OBJS)
 # $@ for the pattern-matched target
 # $< for the pattern-matched dependency
 %.o : %.cpp
-	g++ -g -o -c++11 $@ -c $<
+	g++ -g -o $@ -c $<
 
 # These are Dependency Rules, which are rules without any command.
 # Dependency Rules indicate that if any file to the right of the colon changes,
