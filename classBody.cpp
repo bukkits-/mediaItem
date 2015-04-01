@@ -192,4 +192,3 @@ void mediaInfo::clearInfo()
      sequelItem_ = NULL;
      objectEmpty_ = true;
    }
-

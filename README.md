@@ -13,4 +13,6 @@ This is probably not the code you're looking for.
 - work on '#' menu option
 - make sure all class variables use underscore in name
 - make sure all implementations occur in cpp files (including constructors)
-- add k (set genre) and l (list music by genre) options 
+- add k (set genre) and l (list music by genre) options
+- add comments
+
