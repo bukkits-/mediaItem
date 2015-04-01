@@ -453,11 +453,11 @@ void optionSelect(char inputChar)
     {
       int mediaObjectBytes = 0;
       int authorObjectBytes = 0;
-      for(int i; i <= mediaObject.size(); i++)
+      for(int i = 0; i <= mediaObject.size(); i++)
       {
         mediaObjectBytes = 8 * (sizeof(mediaObject[i]) + mediaObjectBytes);
       }
-      for(int i; i < AUTHORMAX; i++)
+      for(int i = 0; i < AUTHORMAX; i++)
       {
         if(authorObject[i].isActive() == true)
           {
