@@ -115,8 +115,8 @@ void optionSelect(char inputChar)
           mediaObject[i]->returnInfo();
           mediaObject[i]->getAuthor();
           mediaObject[i]->getSequel();
-          mediaObject[i]->printElements();
           mediaObject[i]->childPrintInfo();
+          mediaObject[i]->printElements();
           itemCount++;
           std::cout << std::endl;
         }
