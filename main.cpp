@@ -115,8 +115,8 @@ void optionSelect(char inputChar)
           mediaObject[i]->returnInfo();
           mediaObject[i]->getAuthor();
           mediaObject[i]->getSequel();
-          mediaObject[i]->printElements();
           mediaObject[i]->childPrintInfo();
+          mediaObject[i]->printElements();
           itemCount++;
           std::cout << std::endl;
         }
@@ -303,8 +303,8 @@ void optionSelect(char inputChar)
         mediaObject[selectedObject]->returnInfo();
         mediaObject[selectedObject]->getAuthor();
         mediaObject[selectedObject]->getSequel();
-        mediaObject[selectedObject]->printElements();
         mediaObject[selectedObject]->childPrintInfo();
+        mediaObject[selectedObject]->printElements();
       }
       else
       {
@@ -526,8 +526,8 @@ void optionSelect(char inputChar)
           mediaObject[i]->returnInfo();
           mediaObject[i]->getAuthor();
           mediaObject[i]->getSequel();
-          mediaObject[i]->printElements();
           mediaObject[i]->childPrintInfo();
+          mediaObject[i]->printElements();
           std::cout << std::endl;
         }
       } 
