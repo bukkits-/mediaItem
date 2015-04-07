@@ -28,6 +28,8 @@ public:
 	bookInfo();
 
 	~bookInfo(){};
+	
+	virtual int rank() {return 100;};
 
 	void setISBN(std::string ISBN);
 
@@ -51,6 +53,8 @@ public:
 	musicInfo();
 
 	~musicInfo(){};
+	
+	virtual int rank() {return 200;};
 
 	void setMinutes(float itemMinutes);
 
@@ -80,6 +84,8 @@ public:
 	videoInfo();
 
 	~videoInfo(){};
+	
+	virtual int rank() {return 300;};
 
 	void setDirector(std::string itemDirector);
 

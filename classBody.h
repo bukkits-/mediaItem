@@ -74,6 +74,8 @@ class mediaInfo
 
 // Polymorphic functions
 
+   virtual int rank() {return 0;}
+
    virtual std::string getISBN(){std::string blankISBN = ""; return blankISBN;};
 
    virtual void setISBN(std::string ISBN){};
