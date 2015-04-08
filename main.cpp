@@ -35,7 +35,7 @@ mixed array initalization function
 #include "element.h"
 #include "derived.h"
 
-#define AUTHORMAX 8
+#define AUTHORMAX 30
 #define ELEMENTS 15
 
 //Global Variables
@@ -396,12 +396,162 @@ void optionSelect(char inputChar)
     case 'K':
     {
       std::string genreInput;
+      std::string genreType1 = "Roc";
+      std::string genreType2 = "roc";
+      std::string genreType3 = "Cou";
+      std::string genreType4 = "cou";
+      std::string genreType5 = "Hip";
+      std::string genreType6 = "hip";
+      std::string genreType7 = "Tec";
+      std::string genreType8 = "tec";
+      std::string genreType9 = "reg";
+      std::string genreType10 = "Reg";
       std::cin.ignore(1,'\n');
       std::cout << "Please input genre: ";
       getline(std::cin, genreInput);
       std::cout << std::endl << genreInput << std::endl;
-      mediaObject[selectedObject]->setGenre(genreInput);
+      
+      
+      if ((std::string::npos != genreInput.find(genreType1)) || (std::string::npos != genreInput.find(genreType2)))
+        {
+        std::cout << "Made it in to Rock" << std::endl <<std::endl;
+        genreInput = "Rock";
+        mediaObject[selectedObject]->setGenre(genreInput);
+        }
+        
+      if ((std::string::npos != genreInput.find(genreType3)) || (std::string::npos != genreInput.find(genreType4)))
+        {
+        genreInput = "Country";
+        mediaObject[selectedObject]->setGenre(genreInput);
+        }
+       
+      if ((std::string::npos != genreInput.find(genreType5)) || (std::string::npos != genreInput.find(genreType6)))
+        {
+        genreInput = "HipHop";
+        mediaObject[selectedObject]->setGenre(genreInput);
+        } 
+      
+      if ((std::string::npos != genreInput.find(genreType7)) || (std::string::npos != genreInput.find(genreType8)))
+        {
+        genreInput = "Techno";
+        mediaObject[selectedObject]->setGenre(genreInput);
+        }
+        
+      if ((std::string::npos != genreInput.find(genreType9)) || (std::string::npos != genreInput.find(genreType10)))
+        {
+        genreInput = "Reggae";
+        mediaObject[selectedObject]->setGenre(genreInput);
+        }    
+       
+       else
+        {
+          mediaObject[selectedObject]->setGenre(genreInput);
+        }  
       break;
+    }
+    
+   // Prints items out by Genre 
+    case 'L':
+    {
+     int nArrayIncreaser;   
+     
+       std::cout << "======================Rock======================="<<std::endl;
+       
+         for (nArrayIncreaser = 0; nArrayIncreaser < mediaObject.size();++nArrayIncreaser)
+           {
+             bool genreChoice = false;
+             mediaObject[nArrayIncreaser]->checkRock(genreChoice);
+              if (genreChoice == true)
+                {
+                  std::cout << "Media item " << nArrayIncreaser << ":" << std::endl;
+                  mediaObject[nArrayIncreaser]->returnInfo();
+                  mediaObject[nArrayIncreaser]->getAuthor();
+                  mediaObject[nArrayIncreaser]->getSequel();
+                  mediaObject[nArrayIncreaser]->childPrintInfo();
+                  mediaObject[nArrayIncreaser]->printElements();
+                }
+           } 
+           
+        std::cout << "======================Country======================="<<std::endl;
+       
+         for (nArrayIncreaser = 0; nArrayIncreaser < mediaObject.size();++nArrayIncreaser)
+           {
+             bool genreChoice = false;
+             mediaObject[nArrayIncreaser]->checkCountry(genreChoice);
+              if (genreChoice == true)
+                {
+                  std::cout << "Media item " << nArrayIncreaser << ":" << std::endl;
+                  mediaObject[nArrayIncreaser]->returnInfo();
+                  mediaObject[nArrayIncreaser]->getAuthor();
+                  mediaObject[nArrayIncreaser]->getSequel();
+                  mediaObject[nArrayIncreaser]->childPrintInfo();
+                  mediaObject[nArrayIncreaser]->printElements();
+                }
+           } 
+           
+         std::cout << "======================HipHop======================="<<std::endl;
+         for (nArrayIncreaser = 0; nArrayIncreaser < mediaObject.size();++nArrayIncreaser)
+           {
+             bool genreChoice = false;
+             mediaObject[nArrayIncreaser]->checkHipHop(genreChoice);
+              if (genreChoice == true)
+                {
+                  std::cout << "Media item " << nArrayIncreaser << ":" << std::endl;
+                  mediaObject[nArrayIncreaser]->returnInfo();
+                  mediaObject[nArrayIncreaser]->getAuthor();
+                  mediaObject[nArrayIncreaser]->getSequel();
+                  mediaObject[nArrayIncreaser]->childPrintInfo();
+                  mediaObject[nArrayIncreaser]->printElements();
+                }
+           }
+          
+         std::cout << "======================Techno======================="<<std::endl;
+         for (nArrayIncreaser = 0; nArrayIncreaser < mediaObject.size();++nArrayIncreaser)
+           {
+             bool genreChoice = false;
+             mediaObject[nArrayIncreaser]->checkTechno(genreChoice);
+              if (genreChoice == true)
+                {
+                  std::cout << "Media item " << nArrayIncreaser << ":" << std::endl;
+                  mediaObject[nArrayIncreaser]->returnInfo();
+                  mediaObject[nArrayIncreaser]->getAuthor();
+                  mediaObject[nArrayIncreaser]->getSequel();
+                  mediaObject[nArrayIncreaser]->childPrintInfo();
+                  mediaObject[nArrayIncreaser]->printElements();
+                }
+           }
+           
+          std::cout << "======================Reggae======================="<<std::endl;
+         for (nArrayIncreaser = 0; nArrayIncreaser < mediaObject.size();++nArrayIncreaser)
+           {
+             bool genreChoice = false;
+             mediaObject[nArrayIncreaser]->checkReggae(genreChoice);
+              if (genreChoice == true)
+                {
+                  std::cout << "Media item " << nArrayIncreaser << ":" << std::endl;
+                  mediaObject[nArrayIncreaser]->returnInfo();
+                  mediaObject[nArrayIncreaser]->getAuthor();
+                  mediaObject[nArrayIncreaser]->getSequel();
+                  mediaObject[nArrayIncreaser]->childPrintInfo();
+                  mediaObject[nArrayIncreaser]->printElements();
+                }
+           }
+           
+          std::cout << "======================Other======================="<<std::endl;
+         for (nArrayIncreaser = 0; nArrayIncreaser < mediaObject.size();++nArrayIncreaser)
+           {
+             bool genreChoice = false;
+             mediaObject[nArrayIncreaser]->checkOther(genreChoice);
+              if (genreChoice == true)
+                {
+                  std::cout << "Media item " << nArrayIncreaser << ":" << std::endl;
+                  mediaObject[nArrayIncreaser]->returnInfo();
+                  mediaObject[nArrayIncreaser]->getAuthor();
+                  mediaObject[nArrayIncreaser]->getSequel();
+                  mediaObject[nArrayIncreaser]->childPrintInfo();
+                  mediaObject[nArrayIncreaser]->printElements();
+                }
+           }    
     }
 
   // Displays menu of options

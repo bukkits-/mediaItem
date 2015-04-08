@@ -71,7 +71,112 @@ mediaInfo::~mediaInfo() //destructor - Decrements object counter
 {
   objectAlive::removeObject();
 }//end of destructor. 
+  
+///////////////////////////////////////////////////////////////////////////////////////////
+//setGenre will take the object itemGenre from main and assign it to the itemGenre
+//from the musicInfo private objects.
+//
+const char* GenreNames[] = 
+  {
+  stringify( Rock ),
+  stringify( Country ),
+  stringify( HipHop ),
+  stringify( Techno ),
+  stringify( Reggae ),
+  stringify( Other )
+  }; 
+  
+void mediaInfo::setGenre(std::string itemGenre)
+{
+	if(itemGenre == "Rock")
+	{
+		itemGenre_ = Rock;
+	}
 
+	else if(itemGenre == "Country")
+	{
+		itemGenre_ = Country;
+	}
+
+	else if(itemGenre == "Techno")
+	{
+		itemGenre_ = Techno;
+	}
+
+	else if(itemGenre == "Reggae")
+	{
+		itemGenre_ = Reggae;
+	}
+
+	else if(itemGenre == "HipHop")
+	{
+		itemGenre_ = HipHop;
+	}
+	else
+	{
+		itemGenre_ = Other;
+		std::cout << "Item genre set to OTHER.\n";
+	}
+}//end of setGenre function. 
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//These check functions will check what genre type the item value and return a boolean
+//value.
+//
+
+bool mediaInfo::checkRock(bool &checkGenre)
+  {
+    if (itemGenre_ == Rock)
+      {
+        checkGenre = true;
+        return checkGenre;
+      }
+  };//end of checkRock
+  
+bool mediaInfo::checkCountry(bool &checkGenre)
+  {
+    if (itemGenre_ == Country)
+      {
+        checkGenre = true;
+        return checkGenre;
+      }
+  };//end of checkCountry.
+  
+bool mediaInfo::checkHipHop(bool &checkGenre)
+  {
+    if (itemGenre_ == HipHop)
+      {
+        checkGenre = true;
+        return checkGenre;
+      }
+  };//end of checkHipHop
+  
+bool mediaInfo::checkTechno(bool &checkGenre)
+  {
+    if (itemGenre_ == Techno)
+      {
+        checkGenre = true;
+        return checkGenre;
+      }
+  };//end of checkTechno
+  
+bool mediaInfo::checkReggae(bool &checkGenre)
+  {
+    if (itemGenre_ == Reggae)
+      {
+        checkGenre = true;
+        return checkGenre;
+      }
+  };//end of checkReggae.
+  
+bool mediaInfo::checkOther(bool &checkGenre)
+  {
+    if (itemGenre_ == Other)
+      {
+        checkGenre = true;
+        return checkGenre;
+      }
+  };//end of checkOther
 //////////////////////////////////////////////////////////////////////////////////////
 //getAuthor will print the author if it is not empty/default value.
 //

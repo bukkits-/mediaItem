@@ -55,6 +55,18 @@ public:
 	~musicInfo(){};
 	
 	virtual int rank() {return 200;};
+	
+	//bool checkRock(bool &checkGenre);
+	
+	//bool checkCountry(bool &checkGenre);
+	
+	//bool checkHipHop(bool &checkGenre);
+	
+	//bool checkTechno(bool &checkGenre);
+	
+	//bool checkReggae(bool &checkGenre);
+	
+	//bool checkOther(bool &checkGenre);
 
 	void setMinutes(float itemMinutes);
 

@@ -20,6 +20,12 @@ Implementation of derived class functions
 #define ISBN_DEFAULT "Empty"
 #define MINUTES_DEFAULT 0.0
 #define PRODUCER_DEFAULT "Empty"
+#define ROCK 0
+#define COUNTRY 1
+#define HIPHOP 2
+#define TECHNO 3
+#define REGGAE 4
+#define OTHER 5
 
 /////////////////////////////////////////////////////////
 // bookInfo functions
@@ -124,43 +130,6 @@ std::string musicInfo::getType()
 {
 	return "M";
 }//end of getType function. 
-
-///////////////////////////////////////////////////////////////////////////////////////////
-//setGenre will take the object itemGenre from main and assign it to the itemGenre
-//from the musicInfo private objects.
-//
-void musicInfo::setGenre(std::string itemGenre)
-{
-	if(itemGenre == "Rock")
-	{
-		itemGenre_ = ROCK;
-	}
-
-	if(itemGenre == "Country/Western")
-	{
-		itemGenre_ = COUNTRY;
-	}
-
-	if(itemGenre == "Techno")
-	{
-		itemGenre_ = TECHNO;
-	}
-
-	if(itemGenre == "Reggae")
-	{
-		itemGenre_ = REGGAE;
-	}
-
-	if(itemGenre == "HipHop")
-	{
-		itemGenre_ = HIPHOP;
-	}
-	else
-	{
-		itemGenre_ = OTHER;
-		std::cout << "Item genre set to OTHER.\n";
-	}
-}//end of setGenre function. 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //getGenre will return the object itemGenre_.
