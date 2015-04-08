@@ -2,7 +2,7 @@
 Matthew Groeling
 CS225
 
-Assignment 5
+Assignment 6
 main.cpp
 
 In main.cpp, basic funcions are prototyped and defined.
@@ -268,6 +268,7 @@ void optionSelect(char inputChar)
 
       std::cout << "Input author birth year: ";
       std::cin >> yearBorn;
+      std::cout << yearBorn;
       std::cout << std::endl;
       if(yearBorn != 0)
       {
@@ -276,6 +277,7 @@ void optionSelect(char inputChar)
 
       std::cout << "Input author death year (0 if alive): ";
       std::cin >> yearDied;
+      std::cout << yearDied;
       std::cout << std::endl;
       if(yearDied != 0)
       {
@@ -285,6 +287,7 @@ void optionSelect(char inputChar)
       std::cout << "Input author name: ";
       std::cin.ignore(1);
       getline(std::cin, itemAuthor);
+      std::cout << itemAuthor;
       std::cout << std::endl;
       authorObject[selectedAuthor].setName(itemAuthor);
 
@@ -418,6 +421,7 @@ void optionSelect(char inputChar)
       std::cin.ignore(1,'\n');
       std::cout << "Input media name: ";
       getline(std::cin, mediaItemName);
+      std::cout << mediaItemName;
       mediaObject[selectedObject]->setName(mediaItemName); 
       std::cout << std::endl;
       break;
@@ -455,13 +459,13 @@ void optionSelect(char inputChar)
       int authorObjectBytes = 0;
       for(int i = 0; i <= mediaObject.size(); i++)
       {
-        mediaObjectBytes = 8 * (sizeof(mediaObject[i]) + mediaObjectBytes);
+        mediaObjectBytes = sizeof(mediaObject[i]) + mediaObjectBytes;
       }
       for(int i = 0; i < AUTHORMAX; i++)
       {
         if(authorObject[i].isActive() == true)
           {
-            authorObjectBytes = 8 * (sizeof(authorObject[i]) + authorObjectBytes);
+            authorObjectBytes = sizeof(authorObject[i]) + authorObjectBytes;
           }
       }
 
@@ -541,6 +545,7 @@ void optionSelect(char inputChar)
       float itemValue;
       std::cout << "Input item price: ";
       std::cin >> itemValue;
+      std::cout << itemValue;
       mediaObject[selectedObject]->setValue(itemValue);
       std::cout << std::endl;
       break;
@@ -552,6 +557,7 @@ void optionSelect(char inputChar)
       int itemYear;
       std::cout << "Input item publication year: ";
       std::cin >> itemYear;
+      std::cout << itemYear;
       mediaObject[selectedObject]->setYear(itemYear);
       std::cout << std::endl;
       break;
@@ -579,7 +585,6 @@ int main()
         std::cout << std::endl << "Item " << selectedObject << " Menu: ";
       }
       std::cin >> optionInput;
-      //std::cin.ignore(1, '\n');
       std::cout << optionInput[0] << std::endl;    
       optionSelect(optionInput[0]); 
     }
