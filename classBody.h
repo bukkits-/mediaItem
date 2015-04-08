@@ -25,7 +25,8 @@ constructor and destructor.
 #define CLASSBODY_H
 #define ELEMENTS 15 //Sets size of element array for each mediaInfo object
 #define EMPTY_GENRE NONE
-
+#define stringify( name ) # name
+extern const char* GenreNames[];
 ///////////////////////////////////////////////////
 // Memory reporting namespace for mediaItem objects
 //
@@ -44,7 +45,7 @@ namespace objectAlive
 // NONE is included for use in the musicItem constructor as an initial value
 
 enum Genre
-  {ROCK, COUNTRY, HIPHOP, TECHNO, REGGAE, OTHER, NONE};
+  {Rock, Country, HipHop, Techno, Reggae, Other, NONE};
 
 class mediaInfo
 {
@@ -58,6 +59,7 @@ class mediaInfo
   float itemValue_;
   Author *itemAuthor_; //used to associate an author
   mediaInfo *sequelItem_;
+  Genre itemGenre_;
 
   mediaElement elementObject[ELEMENTS];
 
@@ -92,9 +94,21 @@ class mediaInfo
 
    virtual std::string getType();
 
-   virtual void setGenre(std::string genreInput){};
+   void setGenre(std::string genreInput);
 
    virtual Genre getGenre(){return EMPTY_GENRE;};
+   
+   bool checkRock(bool &checkGenre);
+   
+   bool checkCountry(bool &checkGenre);
+   
+   bool checkHipHop(bool &checkGenre);
+   
+   bool checkReggae(bool &checkGenre);
+   
+   bool checkTechno(bool &checkGenre);
+   
+   bool checkOther(bool &checkGenre);
 
    void setInfo (std::string itemName, float itemValue, int itemYear);
 
