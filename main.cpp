@@ -53,11 +53,18 @@ void optionSelect(char);
 void menuDisplay();
 bool stringCompare(mediaInfo*, mediaInfo*);
 bool validObject(int);
+bool stringCompareValue(mediaInfo*, mediaInfo*);
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//stringCompare will sort the vector elements in ABC order based of the items name.
+//
 bool stringCompare(mediaInfo* m1, mediaInfo* m2)
 {
   return m1->getName() < m2->getName();
 }
+
 
 bool validObject(int itemNumber)
 {
@@ -70,6 +77,14 @@ bool validObject(int itemNumber)
   {
     return true;
   }
+}
+//////////////////////////////////////////////////////////////////////////////////////
+//stringCompareValue will sort the vector elements in order based off of the item 
+//value.
+//
+bool stringCompareValue(mediaInfo* m1, mediaInfo* m2)
+{
+  return m1->getValue() < m2->getValue();
 }
 
 //menuDisplay function - displays menu
@@ -724,7 +739,7 @@ void optionSelect(char inputChar)
              {
                if(mediaObject[nMediaObjectIncreaser]->isEmpty() == false)
                  {
-                   std::cout << "Media item " << nMediaObjectIncreaser << ":" << std::endl;
+                   std::cout << std::endl << std::endl << "Media item " << nMediaObjectIncreaser << ":" << std::endl;
                    mediaObject[nMediaObjectIncreaser]->returnInfo();
                    mediaObject[nMediaObjectIncreaser]->getAuthor();
                    mediaObject[nMediaObjectIncreaser]->getSequel();
@@ -737,18 +752,29 @@ void optionSelect(char inputChar)
            
          case 'V'://case 'V' will sort by value.
            {
-             
+             std::sort(mediaObject.begin(), mediaObject.end(), stringCompareValue);
+             for(int nMediaObjectIncreaser = 0; nMediaObjectIncreaser < mediaObject.size(); nMediaObjectIncreaser++)
+             {
+               if(mediaObject[nMediaObjectIncreaser]->isEmpty() == false)
+                 {
+                   std::cout << std::endl << std::endl << "Media item " << nMediaObjectIncreaser << ":" << std::endl;
+                   mediaObject[nMediaObjectIncreaser]->returnInfo();
+                   mediaObject[nMediaObjectIncreaser]->getAuthor();
+                   mediaObject[nMediaObjectIncreaser]->getSequel();
+                   mediaObject[nMediaObjectIncreaser]->childPrintInfo();
+                   mediaObject[nMediaObjectIncreaser]->printElements();
+                   std::cout << std::endl;
+                 } 
+              }
            }//end of case 'V'   
            
          case 'T'://case T will sort by the type of media item.
-           {
-            std::cout << "Sorting by type\n";
-              std::cout << "===========Book==============="<<std::endl;
+              std::cout << std::endl << std::endl << "===========Book==============="<<std::endl;
                 for (int nIncreaser = 0; nIncreaser < mediaObject.size(); nIncreaser++)
                   {
                     if ((mediaObject[nIncreaser]->rank()) == 100)
                      {
-                       std::cout << "Media item " << nIncreaser << ":" << std::endl;
+                       std::cout<< std::endl << std::endl << "Media item " << nIncreaser << ":" << std::endl;
                        mediaObject[nIncreaser]->returnInfo();
                        mediaObject[nIncreaser]->getAuthor();
                        mediaObject[nIncreaser]->getSequel();
@@ -757,12 +783,12 @@ void optionSelect(char inputChar)
                      }
                   }//end of for loop for type book.
                
-               std::cout << "===========Video==============="<<std::endl;
+               std::cout << std::endl << std::endl << "===========Video==============="<<std::endl;
                 for (int nVideoIncreaser = 0; nVideoIncreaser < mediaObject.size(); nVideoIncreaser++)
                   {
                     if ((mediaObject[nVideoIncreaser]->rank()) == 300)
                      {
-                       std::cout << "Media item " << nVideoIncreaser << ":" << std::endl;
+                       std::cout << std::endl << std::endl << "Media item " << nVideoIncreaser << ":" << std::endl;
                        mediaObject[nVideoIncreaser]->returnInfo();
                        mediaObject[nVideoIncreaser]->getAuthor();
                        mediaObject[nVideoIncreaser]->getSequel();
@@ -771,12 +797,12 @@ void optionSelect(char inputChar)
                      }
                   }//end of for loop for type video.
                   
-                std::cout << "===========Music==============="<<std::endl;
+                std::cout << std::endl << std::endl << "===========Music==============="<<std::endl;
                 for (int nMusicIncreaser = 0; nMusicIncreaser < mediaObject.size(); nMusicIncreaser++)
                   {
                     if ((mediaObject[nMusicIncreaser]->rank()) == 200)
                      {
-                       std::cout << "Media item " << nMusicIncreaser << ":" << std::endl;
+                       std::cout << std::endl << std::endl << "Media item " << nMusicIncreaser << ":" << std::endl;
                        mediaObject[nMusicIncreaser]->returnInfo();
                        mediaObject[nMusicIncreaser]->getAuthor();
                        mediaObject[nMusicIncreaser]->getSequel();
@@ -785,12 +811,12 @@ void optionSelect(char inputChar)
                      }
                   }//end of for loop for type music.  
                   
-                std::cout << "===========Media Info==============="<<std::endl;
+                std::cout << std::endl << std::endl << "===========Media Info==============="<<std::endl;
                 for (int nMediaInfoIncreaser = 0; nMediaInfoIncreaser < mediaObject.size(); nMediaInfoIncreaser++)
                   {
                     if ((mediaObject[nMediaInfoIncreaser]->rank()) == 0)
                      {
-                       std::cout << "Media item " << nMediaInfoIncreaser << ":" << std::endl;
+                       std::cout << std::endl << std::endl << "Media item " << nMediaInfoIncreaser << ":" << std::endl;
                        mediaObject[nMediaInfoIncreaser]->returnInfo();
                        mediaObject[nMediaInfoIncreaser]->getAuthor();
                        mediaObject[nMediaInfoIncreaser]->getSequel();

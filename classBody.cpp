@@ -90,31 +90,31 @@ void mediaInfo::setGenre(std::string itemGenre)
 {
 	if(itemGenre == "Rock")
 	{
-		itemGenre_ = Rock;
+		itemGenre_ = ROCK;
 	}
 
 	else if(itemGenre == "Country")
 	{
-		itemGenre_ = Country;
+		itemGenre_ = COUNTRY;
 	}
 
 	else if(itemGenre == "Techno")
 	{
-		itemGenre_ = Techno;
+		itemGenre_ = TECHNO;
 	}
 
 	else if(itemGenre == "Reggae")
 	{
-		itemGenre_ = Reggae;
+		itemGenre_ = REGGAE;
 	}
 
 	else if(itemGenre == "HipHop")
 	{
-		itemGenre_ = HipHop;
+		itemGenre_ = HIPHOP;
 	}
 	else
 	{
-		itemGenre_ = Other;
+		itemGenre_ = OTHER;
 		std::cout << "Item genre set to OTHER.\n";
 	}
 }//end of setGenre function. 
@@ -126,7 +126,7 @@ void mediaInfo::setGenre(std::string itemGenre)
 
 bool mediaInfo::checkRock(bool &checkGenre)
   {
-    if (itemGenre_ == Rock)
+    if (itemGenre_ == ROCK)
       {
         checkGenre = true;
         return checkGenre;
@@ -135,7 +135,7 @@ bool mediaInfo::checkRock(bool &checkGenre)
   
 bool mediaInfo::checkCountry(bool &checkGenre)
   {
-    if (itemGenre_ == Country)
+    if (itemGenre_ == COUNTRY)
       {
         checkGenre = true;
         return checkGenre;
@@ -144,7 +144,7 @@ bool mediaInfo::checkCountry(bool &checkGenre)
   
 bool mediaInfo::checkHipHop(bool &checkGenre)
   {
-    if (itemGenre_ == HipHop)
+    if (itemGenre_ == HIPHOP)
       {
         checkGenre = true;
         return checkGenre;
@@ -153,7 +153,7 @@ bool mediaInfo::checkHipHop(bool &checkGenre)
   
 bool mediaInfo::checkTechno(bool &checkGenre)
   {
-    if (itemGenre_ == Techno)
+    if (itemGenre_ == TECHNO)
       {
         checkGenre = true;
         return checkGenre;
@@ -162,7 +162,7 @@ bool mediaInfo::checkTechno(bool &checkGenre)
   
 bool mediaInfo::checkReggae(bool &checkGenre)
   {
-    if (itemGenre_ == Reggae)
+    if (itemGenre_ == REGGAE)
       {
         checkGenre = true;
         return checkGenre;
@@ -171,7 +171,7 @@ bool mediaInfo::checkReggae(bool &checkGenre)
   
 bool mediaInfo::checkOther(bool &checkGenre)
   {
-    if (itemGenre_ == Other)
+    if (itemGenre_ == OTHER)
       {
         checkGenre = true;
         return checkGenre;

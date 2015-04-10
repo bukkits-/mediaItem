@@ -45,7 +45,7 @@ namespace objectAlive
 // NONE is included for use in the musicItem constructor as an initial value
 
 enum Genre
-  {Rock, Country, HipHop, Techno, Reggae, Other, NONE};
+  {ROCK, COUNTRY, HIPHOP, TECHNO, REGGAE, OTHER, NONE};
 
 class mediaInfo
 {
