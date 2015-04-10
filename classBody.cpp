@@ -27,6 +27,7 @@ clearInfo() 'zeroes' all attribute values
 #define ELEMENT_DEFAULT 0
 #define SEQUEL_DEFAULT NULL
 #define PAGE_DEFAULT 0
+#define GENRE_DEFAULT NONE
 //int mediaItem::objectsAlive;
 //setInfo can set all values for a mediaObject at once
 
@@ -60,6 +61,7 @@ mediaInfo::mediaInfo()
   objectEmpty_ = EMPTY_DEFAULT;
   currentElement_ = ELEMENT_DEFAULT;
   sequelItem_ = SEQUEL_DEFAULT;
+  itemGenre_ = GENRE_DEFAULT;
   objectAlive::addObject();
 }//end of constructor
 

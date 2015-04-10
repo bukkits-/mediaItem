@@ -284,7 +284,7 @@ void optionSelect(char inputChar)
       {
         std::cout << "Item is not music or video.\n";
       }
-    break;
+      break;
     }
 
   // Creates a new author and prompts user to enter author name, birth year and year of death 
@@ -769,6 +769,7 @@ void optionSelect(char inputChar)
            }//end of case 'V'   
            
          case 'T'://case T will sort by the type of media item.
+         {
               std::cout << std::endl << std::endl << "===========Book==============="<<std::endl;
                 for (int nIncreaser = 0; nIncreaser < mediaObject.size(); nIncreaser++)
                   {
@@ -861,7 +862,6 @@ void optionSelect(char inputChar)
       }
       break;
     }
-
   }
 }
 
