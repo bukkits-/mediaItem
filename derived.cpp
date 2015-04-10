@@ -20,12 +20,12 @@ Implementation of derived class functions
 #define ISBN_DEFAULT "Empty"
 #define MINUTES_DEFAULT 0.0
 #define PRODUCER_DEFAULT "Empty"
-#define ROCK 0
-#define COUNTRY 1
-#define HIPHOP 2
-#define TECHNO 3
-#define REGGAE 4
-#define OTHER 5
+#define DEF_ROCK 0
+#define DEF_COUNTRY 1
+#define DEF_HIPHOP 2
+#define DEF_TECHNO 3
+#define DEF_REGGAE 4
+#define DEF_OTHER 5
 
 /////////////////////////////////////////////////////////
 // bookInfo functions
