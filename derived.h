@@ -1,8 +1,8 @@
 /********************************************
 Matthew Groeling
-
+Joe Mehltretter
 CS225
-Assignment 4
+Assignment 6
 classBody.h
 
 The classes derived from mediaInfo live here 

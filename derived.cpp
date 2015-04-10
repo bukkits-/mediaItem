@@ -1,6 +1,6 @@
 /*************************************************************
 Matthew Groeling
-
+Joe Mehltretter
 CS225 
 Assignment 6
 derived.cpp

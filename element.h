@@ -1,8 +1,8 @@
 /*************************************************************
 Matthew Groeling
-
+Joe Mehltretter
 CS225 
-Assignment 3
+Assignment 6
 element.h
 
 element.h contains constructor and destructor for the mediaElement class

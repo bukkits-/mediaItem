@@ -1,8 +1,8 @@
 /*************************************************************
 Matthew Groeling
-
+Joe Mehltretter
 CS225 
-Assignment 3
+Assignment 6
 element.cpp
 
 element.cpp contains function implementation for the mediaElement class

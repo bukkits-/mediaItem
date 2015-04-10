@@ -1,7 +1,10 @@
+# Matthew Groeling
+# Joe Mehltretter
 # CS225
-# Project 1
-# Aircraft & Simple GUI Menu
+# Assignment 6
+# makefile
 #
+# Uses Prof. Davis' provided makefile
 
 # Here is a simple Make Macro.
 LINK_TARGET = assignment6.exe
@@ -64,6 +67,6 @@ $(LINK_TARGET) : $(OBJS)
 # The commands for making an out-of-date target up-to-date may be found elsewhere
 # (in this case, by the Pattern Rule above).
 # Dependency Rules are often used to capture header file dependencies.
-main.o : derived.cpp classBody.cpp  
+main.o : derived.cpp classBody.cpp Error_Derived.h
 classBody.o : classBody.h derived.cpp derived.h element.cpp element.h
 derived.o : element.cpp element.h derived.h
