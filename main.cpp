@@ -55,6 +55,7 @@ void menuDisplay();
 bool stringCompare(mediaInfo*, mediaInfo*);
 bool validObject(int);
 bool stringCompareValue(mediaInfo*, mediaInfo*);
+bool stringCompareType(mediaInfo*, mediaInfo*);
 std::string menuInput();
 void flushInput();
 
@@ -92,7 +93,7 @@ int intInput()
 //
 bool stringCompare(mediaInfo* m1, mediaInfo* m2)
 {
-  return m1->getName() < m2->getName();
+  return m1->rank() < m2->rank();
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -118,6 +119,14 @@ bool stringCompareValue(mediaInfo* m1, mediaInfo* m2)
 {
   return m1->getValue() < m2->getValue();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////
+//stringCompareType will sort the vector object by media object type.
+bool stringCompareType(mediaInfo* m1, mediaInfo* m2)
+{
+  return m1->getValue() < m2->getValue();
+}
+
 
 //menuDisplay function - displays menu
 void menuDisplay ()
@@ -848,6 +857,7 @@ void optionSelect(char inputChar)
            
          case 'T'://case T will sort by the type of media item.
          {
+              std::sort(mediaObject.begin(), mediaObject.end(), stringCompareType);
               std::cout << std::endl << std::endl << "===========Book==============="<<std::endl;
                 for (int nIncreaser = 0; nIncreaser < mediaObject.size(); nIncreaser++)
                   {
