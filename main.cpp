@@ -29,6 +29,7 @@ mixed array initalization function
 #include <stdlib.h>
 #include <vector>
 #include <algorithm>
+#include <exception>
 
 #include "classBody.h"
 #include "author.h"
@@ -37,23 +38,38 @@ mixed array initalization function
 
 #define AUTHORMAX 30
 #define ELEMENTS 15
+#define SELECT_INIT -1
 
 //Global Variables
 bool loopBool = true;
 static Author authorObject[AUTHORMAX];
 static std::vector<mediaInfo *> mediaObject;
 int selectedAuthor = 0;
-int selectedObject = -1;
+int selectedObject = SELECT_INIT;
 
 
 // Prototypes for optionSelect and menuDisplay
 void optionSelect(char);
 void menuDisplay();
 bool stringCompare(mediaInfo*, mediaInfo*);
+bool validObject(int);
 
 bool stringCompare(mediaInfo* m1, mediaInfo* m2)
 {
   return m1->getName() < m2->getName();
+}
+
+bool validObject(int itemNumber)
+{
+  if(itemNumber == SELECT_INIT)
+  {
+    std::cout << "Please create an object first.\n";
+    return false;
+  }
+  else
+  {
+    return true;
+  }
 }
 
 //menuDisplay function - displays menu
@@ -95,7 +111,10 @@ void optionSelect(char inputChar)
   //Clears all data fields for selected object
     case '0':
     {
-      mediaObject[selectedObject]->clearInfo();
+      if(validObject(selectedObject) == true)
+      {
+        mediaObject[selectedObject]->clearInfo();
+      }
       break;
     }
 
@@ -172,33 +191,28 @@ void optionSelect(char inputChar)
       {
         case 'M':
         {
-          mediaObject.resize(selectedObject + 1);
-          //mediaObject.push_back(new musicInfo());
-          mediaObject[selectedObject] = new musicInfo();
+          mediaObject.push_back(new musicInfo());
           std::cout << "Music item created.\n";
           break;
         }
 
         case 'B':
         {
-          mediaObject.resize(selectedObject + 1);
-          mediaObject[selectedObject] = new bookInfo();
+          mediaObject.push_back(new bookInfo());
           std::cout << "Book item created.\n";
           break;
         }
 
         case 'V':
         {
-          mediaObject.resize(selectedObject + 1);
-          mediaObject[selectedObject] = new videoInfo();
+          mediaObject.push_back(new videoInfo());
           std::cout << "Video item created.\n";
           break;
         }
 
         default:
         {
-          mediaObject.resize(selectedObject + 1);        
-          mediaObject[selectedObject] = new mediaInfo();
+          mediaObject.push_back(new mediaInfo());
           std::cout << "Default media item created.\n";
           break;
         }
@@ -208,7 +222,7 @@ void optionSelect(char inputChar)
   // Deletes currently selected mediaItem object
     case '-':
     {
-      if(mediaObject[selectedObject]->isEmpty() != false)
+      if(mediaObject[selectedObject]->isEmpty() != false && validObject(selectedObject) == true)
       {
         delete mediaObject[selectedObject];
       }
@@ -243,7 +257,8 @@ void optionSelect(char inputChar)
     case 'B' :
     {
       float itemMinutes;
-      if(mediaObject[selectedObject]->getType() == "M" || mediaObject[selectedObject]->getType() == "V")
+      if(mediaObject[selectedObject]->getType() == "M" || mediaObject[selectedObject]->getType() == "V" 
+        && validObject(selectedObject) == true)
       {
         std::cout << "Enter item time: ";
         std::cin >> itemMinutes;
@@ -299,7 +314,7 @@ void optionSelect(char inputChar)
   // Prints currently selected mediaItem attributes
     case 'D':
     {
-      if(mediaObject[selectedObject]->isEmpty() == false)
+      if(mediaObject[selectedObject]->isEmpty() == false && validObject(selectedObject) == true)
       {
         mediaObject[selectedObject]->returnInfo();
         mediaObject[selectedObject]->getAuthor();
@@ -321,20 +336,23 @@ void optionSelect(char inputChar)
       int elementStart;
       int elementEnd;
 
-      std::cout << "Input element start: ";
-      std::cin >> elementStart;
-      std::cout << std::endl;
+      if(validObject(selectedObject) == true)
+      {  
+        std::cout << "Input element start: ";
+        std::cin >> elementStart;
+        std::cout << std::endl;
 
-      std::cout << "Input element end: ";
-      std::cin >> elementEnd;
-      std::cout << std::endl;;
+        std::cout << "Input element end: ";
+        std::cin >> elementEnd;
+        std::cout << std::endl;;
 
-      std::cout << "Input element name: ";
-      std::cin.ignore(1);
-      getline(std::cin, elementName);
-      std::cout << std::endl;
+        std::cout << "Input element name: ";
+        std::cin.ignore(1);
+        getline(std::cin, elementName);
+        std::cout << std::endl;
 
-      mediaObject[selectedObject]->setElement(elementName, elementStart, elementEnd);
+        mediaObject[selectedObject]->setElement(elementName, elementStart, elementEnd);
+      }
       break;
     }
     
@@ -342,7 +360,8 @@ void optionSelect(char inputChar)
     case 'F' :
     {
       std::string itemDirector;
-      if(mediaObject[selectedObject]->getType() == "M" || mediaObject[selectedObject]->getType() == "V")
+      if(mediaObject[selectedObject]->getType() == "M" || mediaObject[selectedObject]->getType() == "V"
+        && validObject(selectedObject) == true)
       {
         std::cout << "Enter music producer or video director: ";
         getline(std::cin, itemDirector);
@@ -359,7 +378,7 @@ void optionSelect(char inputChar)
   // Sets the print status (in print or not) of currently selected mediaItem
     case 'I':
     {
-      if(mediaObject[selectedObject]->getType() == "B")
+      if(mediaObject[selectedObject]->getType() == "B" && validObject(selectedObject) == true)
       {
         bool inPrint;
         std::cout << "Is item in print? [0/1]: ";
@@ -377,7 +396,7 @@ void optionSelect(char inputChar)
   // Sets ISBN of currently selected bookItem 
     case 'J':
     {
-      if(mediaObject[selectedObject]->getType() == "B")
+      if(mediaObject[selectedObject]->getType() == "B" && validObject(selectedObject) == true)
       {
         std::string itemISBN;
         std::cout << "Enter ISBN: ";
@@ -396,56 +415,62 @@ void optionSelect(char inputChar)
     case 'K':
     {
       std::string genreInput;
-      std::string genreType1 = "Roc";
-      std::string genreType2 = "roc";
-      std::string genreType3 = "Cou";
-      std::string genreType4 = "cou";
-      std::string genreType5 = "Hip";
-      std::string genreType6 = "hip";
-      std::string genreType7 = "Tec";
-      std::string genreType8 = "tec";
-      std::string genreType9 = "reg";
-      std::string genreType10 = "Reg";
-      std::cin.ignore(1,'\n');
-      std::cout << "Please input genre: ";
+      
       getline(std::cin, genreInput);
-      std::cout << std::endl << genreInput << std::endl;
+
+      transform(genreInput.begin(), genreInput.end(), genreInput.begin(), ::toupper);
       
-      
-      if ((std::string::npos != genreInput.find(genreType1)) || (std::string::npos != genreInput.find(genreType2)))
-        {
-        std::cout << "Made it in to Rock" << std::endl <<std::endl;
-        genreInput = "Rock";
-        mediaObject[selectedObject]->setGenre(genreInput);
-        }
+      if(validObject(selectedObject) == true && mediaObject[selectedObject]->getType() == "M")
+      {
+        std::string genreType1 = "ROC";
+        std::string genreType2 = "COU";
+        std::string genreType3 = "HIP";
+        std::string genreType4 = "TEC";
+        std::string genreType5 = "REG";
+        std::cin.ignore(1,'\n');
+        std::cout << "Please input genre: ";
+        std::cout << std::endl << genreInput << std::endl;
         
-      if ((std::string::npos != genreInput.find(genreType3)) || (std::string::npos != genreInput.find(genreType4)))
-        {
-        genreInput = "Country";
-        mediaObject[selectedObject]->setGenre(genreInput);
-        }
-       
-      if ((std::string::npos != genreInput.find(genreType5)) || (std::string::npos != genreInput.find(genreType6)))
-        {
-        genreInput = "HipHop";
-        mediaObject[selectedObject]->setGenre(genreInput);
-        } 
-      
-      if ((std::string::npos != genreInput.find(genreType7)) || (std::string::npos != genreInput.find(genreType8)))
-        {
-        genreInput = "Techno";
-        mediaObject[selectedObject]->setGenre(genreInput);
-        }
         
-      if ((std::string::npos != genreInput.find(genreType9)) || (std::string::npos != genreInput.find(genreType10)))
-        {
-        genreInput = "Reggae";
-        mediaObject[selectedObject]->setGenre(genreInput);
-        }    
-       
-       else
-        {
+        if (std::string::npos != genreInput.find(genreType1))
+          {
+          std::cout << "Made it in to Rock" << std::endl <<std::endl;
+          genreInput = "Rock";
           mediaObject[selectedObject]->setGenre(genreInput);
+          }
+          
+        if (std::string::npos != genreInput.find(genreType2))
+          {
+          genreInput = "Country";
+          mediaObject[selectedObject]->setGenre(genreInput);
+          }
+         
+        if (std::string::npos != genreInput.find(genreType3))
+          {
+          genreInput = "HipHop";
+          mediaObject[selectedObject]->setGenre(genreInput);
+          } 
+        
+        if (std::string::npos != genreInput.find(genreType4))
+          {
+          genreInput = "Techno";
+          mediaObject[selectedObject]->setGenre(genreInput);
+          }
+          
+        if (std::string::npos != genreInput.find(genreType5))
+          {
+          genreInput = "Reggae";
+          mediaObject[selectedObject]->setGenre(genreInput);
+          }    
+         
+         else
+          {
+            mediaObject[selectedObject]->setGenre(genreInput);
+          }
+        }
+        else
+        {
+          std::cin.clear();
         }  
       break;
     }
@@ -551,7 +576,9 @@ void optionSelect(char inputChar)
                   mediaObject[nArrayIncreaser]->childPrintInfo();
                   mediaObject[nArrayIncreaser]->printElements();
                 }
-           }    
+           }
+      std::cout << std::endl;
+      break;    
     }
 
   // Displays menu of options
@@ -566,19 +593,22 @@ void optionSelect(char inputChar)
     {
       std::string mediaItemName;
 
-      std::cin.ignore(1,'\n');
-      std::cout << "Input media name: ";
-      getline(std::cin, mediaItemName);
-      std::cout << mediaItemName;
-      mediaObject[selectedObject]->setName(mediaItemName); 
-      std::cout << std::endl;
+      if(validObject(selectedObject) == true)
+      {
+        std::cin.ignore(1,'\n');
+        std::cout << "Input media name: ";
+        getline(std::cin, mediaItemName);
+        std::cout << mediaItemName;
+        mediaObject[selectedObject]->setName(mediaItemName); 
+        std::cout << std::endl;
+      }
       break;
     }
 
   // Sets page number of currently selected bookItem
     case 'P':
     {
-      if(mediaObject[selectedObject]->getType() == "B")
+      if(mediaObject[selectedObject]->getType() == "B" && validObject(selectedObject) == true)
       {
         int inputPageNum;
         std::cout << "Input page number: ";
@@ -620,7 +650,7 @@ void optionSelect(char inputChar)
       std::cout << "There are " << objectAlive::getAlive() << " media objects in memory.\n";
       std::cout << "Media Object size: " << mediaObjectBytes << " Bytes \n";
       std::cout << "Authors in memory: " << objectAuthorAlive::getAuthorAlive() << " author objects in memory.\n";
-      std::cout << "Author Object size: " << authorObjectBytes << " Bytes \n";
+      std::cout << "Author Object size: " << authorObjectBytes << " Bytes (Authors not dynamically allocated.)\n";
       std::cout << std::endl << "Total size of objects : " << mediaObjectBytes + authorObjectBytes << " Bytes" << std::endl;
       break;
     }
@@ -631,20 +661,29 @@ void optionSelect(char inputChar)
       int sequelNum;
       mediaInfo* pSetSequel;
 
-      std::cin.ignore(1,'\n');
-      std::cout << "Input sequel #: ";
-      std::cin >> sequelNum;
-      pSetSequel = mediaObject[sequelNum];
-      mediaObject[selectedObject]->setSequel(pSetSequel);
+      if(validObject(selectedObject) == true)
+      {
+        std::cin.ignore(1,'\n');
+        std::cout << "Input sequel #: ";
+        std::cin >> sequelNum;
+        if(validObject(sequelNum) == true && sequelNum <= mediaObject.size())
+        {
+          pSetSequel = mediaObject[sequelNum];
+          mediaObject[selectedObject]->setSequel(pSetSequel);
 
-      std:: cout << std::endl << "Sequel set to ";
+          std:: cout << std::endl << "Sequel set to ";
 
-      mediaObject[sequelNum]->returnInfo();
-      mediaObject[sequelNum]->getAuthor();
-      mediaObject[sequelNum]->getSequel();
-      mediaObject[sequelNum]->printElements();
-      mediaObject[sequelNum]->childPrintInfo();
-
+          mediaObject[sequelNum]->returnInfo();
+          mediaObject[sequelNum]->getAuthor();
+          mediaObject[sequelNum]->getSequel();
+          mediaObject[sequelNum]->printElements();
+          mediaObject[sequelNum]->childPrintInfo();
+        }
+        else
+        {
+          std::cout << "Sequel could not be set. (Outside range)\n";
+        }
+      }
       break;
     }
 
@@ -654,11 +693,14 @@ void optionSelect(char inputChar)
       int authorInput;
       Author* pAuthorSet;
 
-      std::cout << "Input author number: ";
-      std::cin >> authorInput;
-      std::cout << authorInput << std::endl;
-      pAuthorSet = &authorObject[authorInput];
-      mediaObject[selectedObject]->setAuthor(pAuthorSet);
+      if(validObject(selectedObject) == true)
+      {
+        std::cout << "Input author number: ";
+        std::cin >> authorInput;
+        std::cout << authorInput << std::endl;
+        pAuthorSet = &authorObject[authorInput];
+        mediaObject[selectedObject]->setAuthor(pAuthorSet);
+      }
 
       break;
     }
@@ -666,9 +708,6 @@ void optionSelect(char inputChar)
   //TODO: Implement sorting in "case: 'U'""
     case 'U':
     {
-     //This doesn't really sort anything yet because mediaObject points to classes, not an int or string value
-	   //std::sort(mediaObject.begin(), mediaObject.end(), stringCompare);
-     std::cout << "Sort complete.\n";
      std::cout << "== Media Items ==\n";
      
      char itemType;
@@ -703,6 +742,7 @@ void optionSelect(char inputChar)
            
          case 'T'://case T will sort by the type of media item.
            {
+            std::cout << "Sorting by type\n";
               std::cout << "===========Book==============="<<std::endl;
                 for (int nIncreaser = 0; nIncreaser < mediaObject.size(); nIncreaser++)
                   {
@@ -769,11 +809,15 @@ void optionSelect(char inputChar)
     case 'V':
     {
       float itemValue;
-      std::cout << "Input item price: ";
-      std::cin >> itemValue;
-      std::cout << itemValue;
-      mediaObject[selectedObject]->setValue(itemValue);
-      std::cout << std::endl;
+
+      if(validObject(selectedObject) == true)
+      {
+        std::cout << "Input item price: ";
+        std::cin >> itemValue;
+        std::cout << itemValue;
+        mediaObject[selectedObject]->setValue(itemValue);
+        std::cout << std::endl;
+      }
       break;
     }
 
@@ -781,11 +825,14 @@ void optionSelect(char inputChar)
     case 'Y':
     {
       int itemYear;
-      std::cout << "Input item publication year: ";
-      std::cin >> itemYear;
-      std::cout << itemYear;
-      mediaObject[selectedObject]->setYear(itemYear);
-      std::cout << std::endl;
+      if(validObject(selectedObject) == true)
+      {
+        std::cout << "Input item publication year: ";
+        std::cin >> itemYear;
+        std::cout << itemYear;
+        mediaObject[selectedObject]->setYear(itemYear);
+        std::cout << std::endl;
+      }
       break;
     }
 
@@ -802,7 +849,7 @@ int main()
   while (loopBool)
     {
       std::cin.clear();
-      if(selectedObject == -1)
+      if(selectedObject == SELECT_INIT)
       {
         std::cout << std::endl << "Menu (No Item): ";
       }
