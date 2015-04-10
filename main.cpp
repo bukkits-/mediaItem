@@ -35,6 +35,7 @@ mixed array initalization function
 #include "author.h"
 #include "element.h"
 #include "derived.h"
+#include "Error_Derived.h"
 
 #define AUTHORMAX 30
 #define ELEMENTS 15
@@ -48,15 +49,44 @@ int selectedAuthor = 0;
 int selectedObject = SELECT_INIT;
 
 
-// Prototypes for optionSelect and menuDisplay
+// Prototypes
 void optionSelect(char);
 void menuDisplay();
 bool stringCompare(mediaInfo*, mediaInfo*);
 bool validObject(int);
 bool stringCompareValue(mediaInfo*, mediaInfo*);
+std::string menuInput();
+void flushInput();
+
+//////////////////////////////////////////////////////////////////////////////////////
+// menuInput and intInput checks to make sure that cin has not failed
+
+std::string menuInput()
+{
+  std::string menuInputString;
+  std::cin >> menuInputString;
+
+  if(std::cin.fail())
+  {
+    bool mainRecoverable = false;
+    throw Input_Error(mainRecoverable);
+  }
+  return menuInputString;
+}
 
 
+int intInput()
+{
+  int intInputValue;
+  std::cin >> intInputValue;
 
+  if(std::cin.fail())
+  {
+    bool recoverableCin = true;
+    throw Input_Error(recoverableCin);
+  }
+  return intInputValue;
+}
 //////////////////////////////////////////////////////////////////////////////////////
 //stringCompare will sort the vector elements in ABC order based of the items name.
 //
@@ -65,6 +95,8 @@ bool stringCompare(mediaInfo* m1, mediaInfo* m2)
   return m1->getName() < m2->getName();
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Program's object index starting point is reserved 
 
 bool validObject(int itemNumber)
 {
@@ -295,29 +327,75 @@ void optionSelect(char inputChar)
       int yearDied;
 
       std::cout << "Input author birth year: ";
-      std::cin >> yearBorn;
-      std::cout << yearBorn;
-      std::cout << std::endl;
-      if(yearBorn != 0)
+      try
       {
-        authorObject[selectedAuthor].setBorn(yearBorn);
+        yearBorn = intInput();
+        if(yearBorn != 0) authorObject[selectedAuthor].setBorn(yearBorn);
+      }
+      catch(Input_Error yearError)
+      {
+        if(yearError.getRecoverable())
+        {
+          std::string inputFlush;
+          std::cout << "Not a valid birth year choice.\n";
+          std::cin.clear();
+          getline(std::cin, inputFlush);
+          return;
+        }
+        else
+        {
+          loopBool = false;
+          return;
+        }
+      }
+      catch(...)
+      {
+        std::cout << "You should not be seeing this error.";
+        loopBool = false;
+        return;
       }
 
+      std::cout << yearBorn;
+      std::cout << std::endl;
+
       std::cout << "Input author death year (0 if alive): ";
-      std::cin >> yearDied;
+      try
+      {
+        yearDied = intInput();
+        if(yearDied != 0) authorObject[selectedAuthor].setDied(yearDied);
+      }
+      catch(Input_Error yearError)
+      {
+        if(yearError.getRecoverable())
+        {
+          std::string inputFlush;
+          std::cout << "Not a valid death year choice.\n";
+          std::cin.clear();
+          getline(std::cin, inputFlush);
+          return;
+        }
+        else
+        {
+          loopBool = false;
+          return;
+        }
+      }
+      catch(...)
+      {
+        std::cout << "You should not be seeing this error.";
+        loopBool = false;
+        return;
+      }
+      
       std::cout << yearDied;
       std::cout << std::endl;
-      if(yearDied != 0)
-      {
-        authorObject[selectedAuthor].setDied(yearDied);
-      }
 
       std::cout << "Input author name: ";
       std::cin.ignore(1);
       getline(std::cin, itemAuthor);
+      if(itemAuthor != "") authorObject[selectedAuthor].setName(itemAuthor);
       std::cout << itemAuthor;
       std::cout << std::endl;
-      authorObject[selectedAuthor].setName(itemAuthor);
 
       if(selectedAuthor < AUTHORMAX) //So when a new author is added it will not overwrite the last
       {
@@ -842,7 +920,19 @@ void optionSelect(char inputChar)
         std::cout << "Input item price: ";
         std::cin >> itemValue;
         std::cout << itemValue;
-        mediaObject[selectedObject]->setValue(itemValue);
+        try
+        {
+          mediaObject[selectedObject]->setValue(itemValue);
+        }
+        catch(std::exception valueRange)
+        {
+          std::cout << "Invalid/negative value.\n";
+          return; 
+        }
+        catch(...)
+        {
+          std::cout << "You should not be seeing this error.\n";
+        }
         std::cout << std::endl;
       }
       break;
@@ -883,7 +973,21 @@ int main()
       {
         std::cout << std::endl << "Item " << selectedObject << " Menu: ";
       }
-      std::cin >> optionInput;
+      try
+      {
+        optionInput = menuInput();
+      }
+      catch(const Input_Error &)
+      {
+       std::cout << "Input error detected. Exiting.\n";
+       break;
+      }
+
+      catch(...)
+      {
+        std::cout << "You should not be seeing this error message.\n";
+        break;
+      }
       std::cout << optionInput[0] << std::endl;    
       optionSelect(optionInput[0]); 
     }

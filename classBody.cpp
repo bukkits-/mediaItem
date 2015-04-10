@@ -259,6 +259,10 @@ void mediaInfo::setAuthor (Author* itemAuthor)
 //
 void mediaInfo::setValue(float itemValue)
 {
+  if(itemValue < 0)
+  {
+    throw std::exception();
+  }
   itemValue_ = itemValue;
   objectEmpty_ = false;
 //  std::cout << "Item value set to: " << itemValue_ << std::endl; //debugging
