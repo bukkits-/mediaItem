@@ -29,7 +29,7 @@ public:
 
 	~bookInfo(){};
 	
-	virtual int rank() {return 100;};
+	virtual int rank() {return 200;};
 
 	void setISBN(std::string ISBN);
 
@@ -54,7 +54,7 @@ public:
 
 	~musicInfo(){};
 	
-	virtual int rank() {return 200;};
+	virtual int rank() {return 300;};
 	
 	//bool checkRock(bool &checkGenre);
 	
@@ -97,7 +97,7 @@ public:
 
 	~videoInfo(){};
 	
-	virtual int rank() {return 300;};
+	virtual int rank() {return 400;};
 
 	void setDirector(std::string itemDirector);
 

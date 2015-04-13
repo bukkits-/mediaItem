@@ -7,7 +7,11 @@
 # Uses Prof. Davis' provided makefile
 
 # Here is a simple Make Macro.
-LINK_TARGET = assignment6.exe
+TEST_SCRIPT1 = ts_12.in
+TEST_SCRIPT2 = ts_13.in
+TEST_SCRIPT3 = ts_14.in
+CURRENT_ASSIGNMENT = assignment6
+LINK_TARGET = $(CURRENT_ASSIGNMENT).exe
 
 # Here is a Make Macro that uses the backslash to extend to multiple lines.
 OBJS =  \
@@ -36,6 +40,25 @@ all : $(LINK_TARGET)
 clean : 
 	rm -f $(REBUILDABLES)
 	echo Clean done
+
+final : $(LINK_TARGET)
+	echo Compilation done
+	echo Source code...
+	cat main.cpp
+	cat classBody.h
+	cat classBody.cpp
+	cat derived.h
+	cat derived.cpp
+	cat element.h
+	cat element.cpp
+	cat author.h
+	cat author.cpp
+	cat Error_Derived.h
+	cat makefile
+	echo Test script execution...
+	./$(CURRENT_ASSIGNMENT).exe < $(TEST_SCRIPT1)
+	./$(CURRENT_ASSIGNMENT).exe < $(TEST_SCRIPT2)
+	./$(CURRENT_ASSIGNMENT).exe < $(TEST_SCRIPT3)
 
 # There are two standard Targets your Makefile should probably have:
 # "all" and "clean", because they are often command-line Goals.

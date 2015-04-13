@@ -94,7 +94,7 @@ int intInput()
 //
 bool stringCompare(mediaInfo* m1, mediaInfo* m2)
 {
-  return m1->rank() < m2->rank();
+  return m1->getName() < m2->getName();
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ bool stringCompareValue(mediaInfo* m1, mediaInfo* m2)
 //stringCompareType will sort the vector object by media object type.
 bool stringCompareType(mediaInfo* m1, mediaInfo* m2)
 {
-  return m1->getValue() < m2->getValue();
+  return m1->rank() < m2->rank();
 }
 
 
@@ -181,16 +181,16 @@ void optionSelect(char inputChar)
       int itemCount = 0;
       int authorCount = 0; // these will be used to count the number of items that are printed
       std::cout << "== Media Items ==\n";
-      for(int i = 0; i < mediaObject.size(); i++)
+      for(int mediaCounter = 0; mediaCounter < mediaObject.size(); mediaCounter++)
       {
-        if(mediaObject[i]->isEmpty() == false)
+        if(mediaObject[mediaCounter]->isEmpty() == false)
         {
-          std::cout << "Media item " << i << ":" << std::endl;
-          mediaObject[i]->returnInfo();
-          mediaObject[i]->getAuthor();
-          mediaObject[i]->getSequel();
-          mediaObject[i]->childPrintInfo();
-          mediaObject[i]->printElements();
+          std::cout << "Media item " << mediaCounter << ":" << std::endl;
+          mediaObject[mediaCounter]->returnInfo();
+          mediaObject[mediaCounter]->getAuthor();
+          mediaObject[mediaCounter]->getSequel();
+          mediaObject[mediaCounter]->childPrintInfo();
+          mediaObject[mediaCounter]->printElements();
           itemCount++;
           std::cout << std::endl;
         }
@@ -204,12 +204,12 @@ void optionSelect(char inputChar)
       std::cout << std::endl;
       std::cout << "== Author Items ==\n";
 
-      for(int i = 0; i < AUTHORMAX; i++)
+      for(int authorCounter = 0; authorCounter < AUTHORMAX; authorCounter++)
       {
-        if(authorObject[i].isActive() == true)
+        if(authorObject[authorCounter].isActive() == true)
           {
-            std::cout << "Author " << i << ": \n";
-            authorObject[i].returnInfo();
+            std::cout << "Author " << authorCounter << ": \n";
+            authorObject[authorCounter].returnInfo();
             std::cout << std::endl;
             authorCount++;
           }
@@ -738,15 +738,15 @@ void optionSelect(char inputChar)
     {
       int mediaObjectBytes = 0;
       int authorObjectBytes = 0;
-      for(int i = 0; i <= mediaObject.size(); i++)
+      for(int mediaCounter = 0; mediaCounter <= mediaObject.size(); mediaCounter++)
       {
-        mediaObjectBytes = sizeof(mediaObject[i]) + mediaObjectBytes;
+        mediaObjectBytes = sizeof(mediaObject[mediaCounter]) + mediaObjectBytes;
       }
-      for(int i = 0; i < AUTHORMAX; i++)
+      for(int counterAuthor = 0; counterAuthor < AUTHORMAX; counterAuthor++)
       {
-        if(authorObject[i].isActive() == true)
+        if(authorObject[counterAuthor].isActive() == true)
           {
-            authorObjectBytes = sizeof(authorObject[i]) + authorObjectBytes;
+            authorObjectBytes = sizeof(authorObject[counterAuthor]) + authorObjectBytes;
           }
       }
 

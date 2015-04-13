@@ -71,6 +71,8 @@ mediaInfo::mediaInfo()
 //
 mediaInfo::~mediaInfo() //destructor - Decrements object counter
 {
+  delete itemAuthor_;
+  delete sequelItem_;
   objectAlive::removeObject();
 }//end of destructor. 
   

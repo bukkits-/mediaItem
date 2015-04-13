@@ -4,7 +4,7 @@ Joe Mehltretter
 CS225
 
 Assignment 6
-exception.h
+Error_Derived.h
 
 Inherits from exception.
 
