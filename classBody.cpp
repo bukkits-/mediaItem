@@ -89,6 +89,11 @@ const char* GenreNames[] =
   stringify( Reggae ),
   stringify( Other )
   }; 
+
+void mediaInfo::setEmpty(bool isEmpty)
+{
+  objectEmpty_ = isEmpty;
+}
   
 void mediaInfo::setGenre(std::string itemGenre)
 {

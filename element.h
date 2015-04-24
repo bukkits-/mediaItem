@@ -19,9 +19,11 @@ element.h contains constructor and destructor for the mediaElement class
 
 class mediaElement
 {
-  std::string elementName_;
-  int elementStart_;
-  int elementEnd_;
+  private:
+
+    std::string elementName_;
+    int elementStart_;
+    int elementEnd_;
   
  public:
    //constructor - sets all attributes to initial values and increments object counter
@@ -36,6 +38,15 @@ class mediaElement
    {
     //mediaInfo::objectsAlive--;
    }
+
+    template <class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & elementName_;
+      ar & elementStart_;
+      ar & elementEnd_;  
+    } 
+
    void setName(std::string elementName);
 
    void setStart(int elementStart);

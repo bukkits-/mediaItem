@@ -965,34 +965,21 @@ void optionSelect(char inputChar)
     //Writes elements to a file
     case 'W':
     {
-<<<<<<< HEAD
-      std::ofstream saveFile("data.dat");
+      // Writes authors to a file
+      std::ofstream aSaveFile("authors.dat");
+      boost::archive::text_oarchive aArchiveOut(aSaveFile);
+      aArchiveOut << authorObject;
 
-      for(int saveCounter = 0; saveCounter < AUTHORMAX; saveCounter++)
-      {
-        boost::archive::text_oarchive authorArchive(saveFile);
-        authorArchive << authorObject[saveCounter];
-      }
+      // Writes mediaItem objects to a file
+      std::ofstream mSaveFile("items.dat");
+      boost::archive::text_oarchive mArchiveOut(mSaveFile);
 
-      //inputItems.open("data.dat", std::ios::in | std::ios::binary);
-      //for(std::vector<mediaInfo> itr = mediaObject.begin(); itr != mediaObject.end() ; ++itr)
-      //for (int counter = 0; counter < mediaObject.size(); ++counter)
-      // {
-      //  mediaInfo* itr = mediaObject[counter];
-      //  itr->writeData(inputItems);
-      // }
-=======
-      std::ofstream inputItems;
       ioMediaInfo itemSender;
-      mediaInfo *temp;
-      inputItems.open("data.dat", std::ios::in | std::ios::binary);
-      //for(std::vector<mediaInfo> itr = mediaObject.begin(); itr != mediaObject.end() ; ++itr)
-      for (int counter = 0; counter < mediaObject.size(); ++counter)
+      for (int mediaWrite = 0; mediaWrite < mediaObject.size(); mediaWrite++)
        {
-        temp = mediaObject[counter];
-        itemSender.assignVariables(inputItems, temp);
+        itemSender.assignVariables(mediaObject[mediaWrite]);
+        mArchiveOut << itemSender;
        }
->>>>>>> 0e184a3e08b45b107097f15a2d13176ebc100b0c
       break;
     }
     
@@ -1013,41 +1000,74 @@ void optionSelect(char inputChar)
    // Reads file of elements 
     case 'Z':
     {
-      
-<<<<<<< HEAD
-      std::ifstream inputItems;
-      inputItems.open("data.dat", std::ios::out | std::ios::binary);
-      if(inputItems.is_open())
-        {
-          // 1st param: the location to write data to
-          // 2nd param: the amount of bytes to read from the file
-          // NOTE: make sure you've sized the vector appropriately before writing to it.
-          inputItems.read((char*)mediaObject.data(),sizeof(mediaInfo)*mediaObject.size());
+      // Reads in authors to author array
+      std::ifstream aReadFile("authors.dat");
 
-            for(int newCounter=0;newCounter<mediaObject.size();++newCounter) 
-              {
-                mediaObject[newCounter]->returnInfo();
-                //mediaObject[newCounter]->getAuthor();
-              }
+      boost::archive::text_iarchive aArchiveIn(aReadFile);
+      aArchiveIn >> authorObject;
 
-        inputItems.close();
-        
-    }
-=======
->>>>>>> 0e184a3e08b45b107097f15a2d13176ebc100b0c
+      //Reads in mediaItems
+
+      std::ifstream mReadFile("items.dat");
+
+      boost::archive::text_iarchive mArchiveIn(mReadFile);
+
+      std::string itemType;
+      ioMediaInfo itemReciever;
+
+     // for (int mediaRead = 0; mediaRead < 20; mediaRead++)
+      // {
+
+        mArchiveIn >> itemReciever;
+
+        // Checks type of current object and creates a new mediaItem object in the vector to store it
+
+        //TODO: Break case statement repetition into functions for greater code reuse
+
+        itemType = itemReciever.getType();
+
+          switch(itemType[0])
+          {
+            case '*':
+            {
+              mediaObject.push_back(new mediaInfo());
+              selectedObject++;
+              mediaObject[selectedObject]->setName(itemReciever.getName());
+              mediaObject[selectedObject]->setYear(itemReciever.getYear());
+              mediaObject[selectedObject]->setEmpty(itemReciever.getEmpty());
+              break;
+            }
+            case 'B':
+            {
+              mediaObject.push_back(new bookInfo());
+              mediaObject[selectedObject]->setName(itemReciever.getName());
+              mediaObject[selectedObject]->setEmpty(itemReciever.getEmpty());
+              break;
+            }
+            case 'V':
+            {
+              mediaObject.push_back(new videoInfo());
+              mediaObject[selectedObject]->setName(itemReciever.getName());
+              mediaObject[selectedObject]->setEmpty(itemReciever.getEmpty());
+              break;
+            }
+            case 'M':
+            {
+              mediaObject.push_back(new musicInfo());
+              mediaObject[selectedObject]->setName(itemReciever.getName());
+              mediaObject[selectedObject]->setEmpty(itemReciever.getEmpty());
+              break;
+            }
+            default:
+            {
+              break;
+            }
+          }
+
+      // }
       break;
     }
   }
-}
-
-void fileWriteBin( const char* file_name, const std::vector<mediaInfo>& items )
-{
-    
-}
-
-std::vector<mediaInfo> readDataBinary( const char* file_name )
-{
-    
 }
 
 // Main displays the menu and then enters into a while loop that recieves input and

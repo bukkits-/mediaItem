@@ -13,14 +13,6 @@ author.h contains the Author class constructor and destructor.
 #include <string>
 #include <fstream>
 
-#include <cstddef>
-#include <iomanip>
-
-#include <boost/archive/tmpdir.hpp>
-#include <boost/serialization/base_object.hpp>
-#include <boost/serialization/utility.hpp>
-#include <boost/serialization/list.hpp>
-#include <boost/serialization/assume_abstract.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 
@@ -47,6 +39,7 @@ class Author
       ar & authorName_;
       ar & yearBorn_;
       ar & yearDied_;
+      ar & authorActive_;
     }
 
     std::string authorName_;

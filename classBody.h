@@ -50,7 +50,7 @@ enum Genre
 class mediaInfo
 {
  
- private: 
+ private:
    
   int itemYear_; 
   int currentElement_; //used to make sure that an element is not written to twice
@@ -65,8 +65,8 @@ class mediaInfo
 
  public:
 
-   std::string itemName_;
-   bool objectEmpty_; 
+  std::string itemName_;
+  bool objectEmpty_; 
 
 //constructor/destructor - sets all attributes to initial values and increments object counter 
 
@@ -113,6 +113,8 @@ class mediaInfo
    bool checkOther(bool &checkGenre);
 
    void setInfo (std::string itemName, float itemValue, int itemYear);
+
+   void setEmpty(bool isEmpty);
 
    void setElement(std::string elementName, int elementStart, int elementEnd);
 

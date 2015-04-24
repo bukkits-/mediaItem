@@ -39,20 +39,21 @@ constructor and destructor.
  
 ioMediaInfo::~ioMediaInfo(){};
 
-void ioMediaInfo::assignVariables(std::ofstream & _fstream, mediaInfo* originalMediaObject)
+void ioMediaInfo::assignVariables(mediaInfo* originalMediaObject)
  {
      mediaItemName_ = originalMediaObject->getName();
      mediaItemYear_ = originalMediaObject->getYear(); 
      mediaItemPageNum_ = originalMediaObject->getPage();
      mediaItemPrint_ = originalMediaObject->getPrint();
      mediaItemValue_ = originalMediaObject->getValue();
+     mediaItemType_ = originalMediaObject->getType();
+     isEmpty_ = originalMediaObject->isEmpty();
      //mediaItemAuthor_ = originalMediaObject->getAuthor(); 
-     
-     
-       _fstream.write(mediaItemName_.c_str(), mediaItemName_.length());
-       //_fstream.write((const char *) &mediaItemAuthor_, sizeof(mediaItemAuthor_));
-       _fstream.write((const char *) &mediaItemYear_, sizeof(mediaItemYear_));
-       _fstream.write((const char *) &mediaItemValue_, sizeof(mediaItemValue_));
-       _fstream.write((const char *) &mediaItemPrint_, sizeof(mediaItemValue_));
-       _fstream.write((const char *) &mediaItemPageNum_, sizeof(mediaItemValue_));
+ }
+
+ void ioMediaInfo::printData()
+ {
+  std::cout << mediaItemName_ << std::endl;
+
+
  }

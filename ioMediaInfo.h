@@ -25,14 +25,30 @@ constructor and destructor.
 
 class ioMediaInfo
  {
-   private:
- 
+  private:
+
+    friend class boost::serialization::access;
+    template <class Archive>
+    void serialize(Archive & ar, const unsigned int version)
+    {
+      ar & mediaItemName_;
+      ar & mediaItemYear_; 
+      ar & mediaItemPageNum_;
+      ar & mediaItemPrint_;
+      ar & mediaItemValue_;
+      ar & mediaItemAuthor_; 
+      ar & mediaItemType_;
+      ar & isEmpty_;
+    } 
+
      std::string mediaItemName_;
      int mediaItemYear_; 
      int mediaItemPageNum_;
      bool mediaItemPrint_;
+     bool isEmpty_;
      float mediaItemValue_;
      int mediaItemAuthor_; //used to associate an author
+     std::string mediaItemType_;
   
   public:
   
@@ -40,8 +56,49 @@ class ioMediaInfo
      
      ~ioMediaInfo();
      
-     void assignVariables(std::ofstream & _fstream, mediaInfo*);
+     void assignVariables(mediaInfo*);
+
+     std::string getName()
+     {
+      return mediaItemName_;
+     };
+
+     int getYear()
+     {
+      return mediaItemYear_;
+     };
+
+     int getPage()
+     {
+      return mediaItemPageNum_;
+     };
+
+     bool getPrint()
+     {
+      return mediaItemPrint_;
+     };
+
+     float getValue()
+     {
+      return mediaItemValue_;
+     };
+
+     float getAuthor()
+     {
+      return mediaItemAuthor_;
+     };
      
+     std::string getType()
+     {
+      return mediaItemType_;
+     }
+
+     bool getEmpty()
+     {
+      return isEmpty_;
+     }
+
+     void printData();
      //writeToFile();
   
      //readToFile();

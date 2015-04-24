@@ -50,6 +50,16 @@ private:
 	std::string itemProducer_;
 	Genre itemGenre_;
 
+	friend class boost::serialization::access;
+  template <class Archive>
+  void serialize(Archive & ar, const unsigned int version)
+  {
+  	ar & boost::serialization::base_object<mediaInfo>(*this);
+  	ar & itemMinutes_;
+  	ar & itemProducer_;
+  	ar & itemGenre_;
+  } 
+
 public:
 	
 	musicInfo();
@@ -83,6 +93,16 @@ class videoInfo : public mediaInfo
 private:
 	float itemMinutes_;
 	std::string itemDirector_;
+
+  friend class boost::serialization::access;
+
+  template <class Archive>
+  void serialize(Archive & ar, const unsigned int version)
+  {
+  	ar & boost::serialization::base_object<mediaInfo>(*this);
+  	ar & itemMinutes_;
+  	ar & itemDirector_;
+  } 
 
 public:
 	videoInfo();
