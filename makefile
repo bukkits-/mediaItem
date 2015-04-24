@@ -7,10 +7,9 @@
 # Uses Prof. Davis' provided makefile
 
 # Here is a simple Make Macro.
-TEST_SCRIPT1 = ts_12.in
-TEST_SCRIPT2 = ts_13.in
-TEST_SCRIPT3 = ts_14.in
-CURRENT_ASSIGNMENT = assignment6
+TEST_SCRIPT1 = ts_15.in
+TEST_SCRIPT2 = ts_16.in
+CURRENT_ASSIGNMENT = assignment7
 LINK_TARGET = $(CURRENT_ASSIGNMENT).exe
 
 # Here is a Make Macro that uses the backslash to extend to multiple lines.
@@ -56,9 +55,8 @@ final : $(LINK_TARGET)
 	cat Error_Derived.h
 	cat makefile
 	echo Test script execution...
-	./$(CURRENT_ASSIGNMENT).exe < $(TEST_SCRIPT1)
-	./$(CURRENT_ASSIGNMENT).exe < $(TEST_SCRIPT2)
-	./$(CURRENT_ASSIGNMENT).exe < $(TEST_SCRIPT3)
+	./$(CURRENT_ASSIGNMENT).exe < $(TEST_SCRIPT1) -f data.dat
+	./$(CURRENT_ASSIGNMENT).exe < $(TEST_SCRIPT2) -f data.dat
 
 # There are two standard Targets your Makefile should probably have:
 # "all" and "clean", because they are often command-line Goals.
@@ -74,7 +72,7 @@ final : $(LINK_TARGET)
 # $^ expands to the rule's dependencies, in this case the three files
 # main.o, test1.o, and  test2.o.
 $(LINK_TARGET) : $(OBJS)
-	g++ -g -o $@ $^
+	g++ -std=c++11 -g -o $@ $^
 
 # Here is a Pattern Rule, often used for compile-line.
 # It says how to create a file with a .o suffix, given a file with a .cpp suffix.

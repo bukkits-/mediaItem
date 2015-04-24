@@ -368,6 +368,17 @@ void mediaInfo::returnInfo()
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
+//fileWriteBin() will write the vector into the file.
+
+void mediaInfo::writeData(std::ofstream & _fstream)
+{
+    _fstream.write(itemName_.c_str(), itemName_.length());
+    _fstream.write((const char *) &itemAuthor_, sizeof(itemAuthor_));
+    _fstream.write((const char *) &itemYear_, sizeof(itemYear_));
+    _fstream.write((const char *) &itemValue_, sizeof(itemValue_));
+}
+
+//////////////////////////////////////////////////////////////////////////////////////
 //clearInfo will clear all objects of a specific object and set them to the default
 //values. 
 void mediaInfo::clearInfo()

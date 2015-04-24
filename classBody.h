@@ -76,6 +76,8 @@ class mediaInfo
 
 // Polymorphic functions
 
+   void writeData(std::ofstream & _fstream);
+
    virtual int rank() {return 100;}
 
    virtual std::string getISBN(){std::string blankISBN = ""; return blankISBN;};
@@ -151,6 +153,10 @@ class mediaInfo
    void printName();
 
    void returnInfo();
+   
+   //void fileWriteBin( const char* file_name, const std::vector<mediaInfo>& items );
+   
+   //std::vector<mediaInfo> readDataBinary( const char* file_name );
    
    //bool sortByName(const mediaInfo &lhs, const mediaInfo &rhs) { return lhs.itemName_ < rhs.itemName_; }
 };

@@ -30,6 +30,8 @@ public:
 	~bookInfo(){};
 	
 	virtual int rank() {return 200;};
+	
+	void writeData(std::ofstream & _fstream);
 
 	void setISBN(std::string ISBN);
 
@@ -56,17 +58,7 @@ public:
 	
 	virtual int rank() {return 300;};
 	
-	//bool checkRock(bool &checkGenre);
-	
-	//bool checkCountry(bool &checkGenre);
-	
-	//bool checkHipHop(bool &checkGenre);
-	
-	//bool checkTechno(bool &checkGenre);
-	
-	//bool checkReggae(bool &checkGenre);
-	
-	//bool checkOther(bool &checkGenre);
+	void writeData(std::ofstream & _fstream);
 
 	void setMinutes(float itemMinutes);
 
@@ -96,6 +88,8 @@ public:
 	videoInfo();
 
 	~videoInfo(){};
+	
+	void writeData(std::ofstream & _fstream);
 	
 	virtual int rank() {return 400;};
 

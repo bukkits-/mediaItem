@@ -59,9 +59,9 @@ bool stringCompareValue(mediaInfo*, mediaInfo*);
 bool stringCompareType(mediaInfo*, mediaInfo*);
 std::string menuInput();
 void flushInput();
+void fileWriteBin( const char* file_name, const std::vector<mediaInfo>& items );   
+std::vector<mediaInfo> readDataBinary( const char* file_name );
 
-//////////////////////////////////////////////////////////////////////////////////////
-// menuInput and intInput checks to make sure that cin has not failed
 
 std::string menuInput()
 {
@@ -151,8 +151,10 @@ void menuDisplay ()
   std::cout << "S : Set item sequel\n";
   std::cout << "T : Set item author\n";
   std::cout << "V : Set item value\n";
+  std::cout << "W : Write media to database file\n";
   std::cout << "Y : Set item publication year\n";
   std::cout << "Q : Quit\n";
+  std::cout << "Z : Read media item from database file\n";
   std::cout << "--------------------------------\n"; 
   std::cout << std::endl;
 }
@@ -305,6 +307,7 @@ void optionSelect(char inputChar)
         else
         {
           std::cout << "Outside range (0-" << mediaObject.size() <<")\n";
+          selectBool = false;
         }
       }
       break;
@@ -948,7 +951,20 @@ void optionSelect(char inputChar)
       }
       break;
     }
-
+    //Writes elements to a file
+    case 'W':
+    {
+      std::ofstream inputItems;
+      inputItems.open("data.dat", std::ios::in | std::ios::binary);
+      //for(std::vector<mediaInfo> itr = mediaObject.begin(); itr != mediaObject.end() ; ++itr)
+      for (int counter = 0; counter < mediaObject.size(); ++counter)
+       {
+        mediaInfo* itr = mediaObject[counter];
+        itr->writeData(inputItems);
+       }
+      break;
+    }
+    
   // Sets release year of currently selected mediaItem
     case 'Y':
     {
@@ -963,14 +979,47 @@ void optionSelect(char inputChar)
       }
       break;
     }
+   // Reads file of elements 
+    case 'Z':
+    {
+      std::ifstream inputItems;
+      inputItems.open("data.dat", std::ios::out | std::ios::binary);
+      if(inputItems.is_open())
+        {
+          // 1st param: the location to write data to
+          // 2nd param: the amount of bytes to read from the file
+          // NOTE: make sure you've sized the vector appropriately before writing to it.
+          inputItems.read((char*)mediaObject.data(),sizeof(mediaInfo)*mediaObject.size());
+
+            for(int newCounter=0;newCounter<mediaObject.size();++newCounter) 
+              {
+                mediaObject[newCounter]->returnInfo();
+                //mediaObject[newCounter]->getAuthor();
+              }
+
+        inputItems.close();
+    }
+      break;
+    }
   }
+}
+
+void fileWriteBin( const char* file_name, const std::vector<mediaInfo>& items )
+{
+    
+}
+
+std::vector<mediaInfo> readDataBinary( const char* file_name )
+{
+    
 }
 
 // Main displays the menu and then enters into a while loop that recieves input and
 // uses optionSelect to test against the different cases
-int main()
+int main(int argc, char* argv[])
 {
   std::string optionInput;
+  const char* const file_name = "data.bin" ;
   menuDisplay();
 
   while (loopBool)

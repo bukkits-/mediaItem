@@ -30,6 +30,13 @@ Implementation of derived class functions
 /////////////////////////////////////////////////////////
 // bookInfo functions
 
+void bookInfo::writeData(std::ofstream & _fstream)
+{
+    mediaInfo::writeData(_fstream);
+    //do a separate write for all the items within book
+    _fstream.write(itemName_.c_str(), itemName_.length());//change this to ISBN.
+}
+
 // bookInfo constructor
 bookInfo::bookInfo()
 {
@@ -79,6 +86,13 @@ void bookInfo::childPrintInfo()
 //////////////////////////////////////////
 // musicInfo functions
 
+void musicInfo::writeData(std::ofstream & _fstream)
+{
+    mediaInfo::writeData(_fstream);
+    //do a separate write for all the items within music like below
+    _fstream.write(itemProducer_.c_str(), itemProducer_.length());
+    _fstream.write((const char *) &itemMinutes_, sizeof(itemMinutes_));
+}
 //Constructor
 
 musicInfo::musicInfo()
@@ -158,6 +172,15 @@ void musicInfo::childPrintInfo()
 ////////////////////////////////////////////////
 // videoInfo functions
 
+
+void videoInfo::writeData(std::ofstream & _fstream)
+{
+    mediaInfo::writeData(_fstream);
+    
+    //do a separate write for all the items within video like below
+    _fstream.write((const char *) &itemMinutes_, sizeof(itemMinutes_));
+    _fstream.write(itemDirector_.c_str(), itemDirector_.length());
+}
 //constructor
 
 videoInfo::videoInfo()
