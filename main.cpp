@@ -47,6 +47,7 @@ mixed array initalization function
 #include "element.h"
 #include "derived.h"
 #include "Error_Derived.h"
+#include "ioMediaInfo.h"
 
 #define AUTHORMAX 30
 #define ELEMENTS 15
@@ -964,6 +965,7 @@ void optionSelect(char inputChar)
     //Writes elements to a file
     case 'W':
     {
+<<<<<<< HEAD
       std::ofstream saveFile("data.dat");
 
       for(int saveCounter = 0; saveCounter < AUTHORMAX; saveCounter++)
@@ -979,6 +981,18 @@ void optionSelect(char inputChar)
       //  mediaInfo* itr = mediaObject[counter];
       //  itr->writeData(inputItems);
       // }
+=======
+      std::ofstream inputItems;
+      ioMediaInfo itemSender;
+      mediaInfo *temp;
+      inputItems.open("data.dat", std::ios::in | std::ios::binary);
+      //for(std::vector<mediaInfo> itr = mediaObject.begin(); itr != mediaObject.end() ; ++itr)
+      for (int counter = 0; counter < mediaObject.size(); ++counter)
+       {
+        temp = mediaObject[counter];
+        itemSender.assignVariables(inputItems, temp);
+       }
+>>>>>>> 0e184a3e08b45b107097f15a2d13176ebc100b0c
       break;
     }
     
@@ -1000,6 +1014,7 @@ void optionSelect(char inputChar)
     case 'Z':
     {
       
+<<<<<<< HEAD
       std::ifstream inputItems;
       inputItems.open("data.dat", std::ios::out | std::ios::binary);
       if(inputItems.is_open())
@@ -1018,6 +1033,8 @@ void optionSelect(char inputChar)
         inputItems.close();
         
     }
+=======
+>>>>>>> 0e184a3e08b45b107097f15a2d13176ebc100b0c
       break;
     }
   }
@@ -1038,7 +1055,7 @@ std::vector<mediaInfo> readDataBinary( const char* file_name )
 int main(int argc, char* argv[])
 {
   std::string optionInput;
-  const char* const file_name = "data.bin" ;
+  const char* const file_name = "data.dat" ;
   menuDisplay();
 
   while (loopBool)
