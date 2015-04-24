@@ -32,6 +32,16 @@ mixed array initalization function
 #include <algorithm>
 #include <exception>
 
+
+#include <boost/archive/tmpdir.hpp>
+#include <boost/serialization/base_object.hpp>
+#include <boost/serialization/utility.hpp>
+#include <boost/serialization/list.hpp>
+#include <boost/serialization/assume_abstract.hpp>
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+
+
 #include "classBody.h"
 #include "author.h"
 #include "element.h"
@@ -954,14 +964,21 @@ void optionSelect(char inputChar)
     //Writes elements to a file
     case 'W':
     {
-      std::ofstream inputItems;
-      inputItems.open("data.dat", std::ios::in | std::ios::binary);
+      std::ofstream saveFile("data.dat");
+
+      for(int saveCounter = 0; saveCounter < AUTHORMAX; saveCounter++)
+      {
+        boost::archive::text_oarchive authorArchive(saveFile);
+        authorArchive << authorObject[saveCounter];
+      }
+
+      //inputItems.open("data.dat", std::ios::in | std::ios::binary);
       //for(std::vector<mediaInfo> itr = mediaObject.begin(); itr != mediaObject.end() ; ++itr)
-      for (int counter = 0; counter < mediaObject.size(); ++counter)
-       {
-        mediaInfo* itr = mediaObject[counter];
-        itr->writeData(inputItems);
-       }
+      //for (int counter = 0; counter < mediaObject.size(); ++counter)
+      // {
+      //  mediaInfo* itr = mediaObject[counter];
+      //  itr->writeData(inputItems);
+      // }
       break;
     }
     
@@ -982,6 +999,7 @@ void optionSelect(char inputChar)
    // Reads file of elements 
     case 'Z':
     {
+      
       std::ifstream inputItems;
       inputItems.open("data.dat", std::ios::out | std::ios::binary);
       if(inputItems.is_open())
@@ -998,6 +1016,7 @@ void optionSelect(char inputChar)
               }
 
         inputItems.close();
+        
     }
       break;
     }
