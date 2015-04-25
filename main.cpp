@@ -1015,8 +1015,10 @@ void optionSelect(char inputChar)
       std::string itemType;
       ioMediaInfo itemReciever;
 
-     // for (int mediaRead = 0; mediaRead < 20; mediaRead++)
-      // {
+      for (int mediaRead = 0; mediaRead < mReadFile.end; mediaRead++)
+      {
+
+        selectedObject = mediaRead;
 
         mArchiveIn >> itemReciever;
 
@@ -1031,7 +1033,6 @@ void optionSelect(char inputChar)
             case '*':
             {
               mediaObject.push_back(new mediaInfo());
-              selectedObject++;
               mediaObject[selectedObject]->setName(itemReciever.getName());
               mediaObject[selectedObject]->setYear(itemReciever.getYear());
               mediaObject[selectedObject]->setEmpty(itemReciever.getEmpty());
@@ -1041,6 +1042,7 @@ void optionSelect(char inputChar)
             {
               mediaObject.push_back(new bookInfo());
               mediaObject[selectedObject]->setName(itemReciever.getName());
+              mediaObject[selectedObject]->setYear(itemReciever.getYear());
               mediaObject[selectedObject]->setEmpty(itemReciever.getEmpty());
               break;
             }
@@ -1048,6 +1050,7 @@ void optionSelect(char inputChar)
             {
               mediaObject.push_back(new videoInfo());
               mediaObject[selectedObject]->setName(itemReciever.getName());
+              mediaObject[selectedObject]->setYear(itemReciever.getYear());              
               mediaObject[selectedObject]->setEmpty(itemReciever.getEmpty());
               break;
             }
@@ -1055,16 +1058,18 @@ void optionSelect(char inputChar)
             {
               mediaObject.push_back(new musicInfo());
               mediaObject[selectedObject]->setName(itemReciever.getName());
+              mediaObject[selectedObject]->setYear(itemReciever.getYear());
               mediaObject[selectedObject]->setEmpty(itemReciever.getEmpty());
               break;
             }
             default:
             {
+              std::cout << "No matching type\n";
               break;
             }
           }
 
-      // }
+       }
       break;
     }
   }
